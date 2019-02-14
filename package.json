@@ -1,0 +1,25 @@
+{
+  "name": "duck-dog-deliberations",
+  "description": "Ever-evolving archive and living developer (b)log for learning and working with Sanity and Gatsby",
+  "private": true,
+  "version": "1.0.0",
+  "author": "Martin Jacobsen <devbot@martinjacobsen.no>",
+  "scripts": {
+    "clean": "lerna clean",
+    "deploy": "lerna run deploy",
+    "empty-cache": "rimraf web/.cache",
+    "init": "cd studio && sanity init && lerna run graphql-deploy",
+    "format": "lerna run format",
+    "lint": "lerna run lint",
+    "graphql-deploy": "lerna run graphql-deploy",
+    "sanity-deploy": "lerna run sanity-deploy",
+    "postinstall": "lerna bootstrap",
+    "start": "lerna run empty-cache && lerna run start --parallel",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "lerna": "^3.11.1",
+    "rimraf": "^2.6.3"
+  },
+  "dependencies": {}
+}
