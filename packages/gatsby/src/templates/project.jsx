@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import Layout from '../components/Layout/Layout';
 // import Container from '../components/container';
 // import GraphQLErrorList from '../components/graphql-error-list';
 // import Project from '../components/project';
@@ -11,12 +12,13 @@ import { graphql } from 'gatsby';
 const ProjectTemplate = (props) => {
   const { data, errors } = props;
   const project = data && data.project;
-  console.log('project: ', project);
+  console.log('data: ', data);
+
   return (
-    <div>
+    <Layout pageType="project" pageData={data}>
       {errors && <h1>Errored!</h1>}
       {project && <h1>OK!</h1>}
-    </div>
+    </Layout>
     // <Layout>
     //   {errors && <SEO title="GraphQL Error" />}
     //   {project && <SEO title={project.title || 'Untitled'} />}
@@ -78,6 +80,15 @@ export const query = graphql`
         }
         asset {
           _id
+          fluid(maxWidth: 1200) {
+            ...GatsbySanityImageFluid
+          }
+          metadata {
+            lqip
+            dimensions {
+              aspectRatio
+            }
+          }
         }
         alt
       }

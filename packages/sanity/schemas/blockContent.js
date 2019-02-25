@@ -30,6 +30,7 @@ export default {
         { title: 'H2', value: 'h2' },
         { title: 'H3', value: 'h3' },
         { title: 'H4', value: 'h4' },
+        { title: 'Inline Code', value: 'code' },
         { title: 'Quote', value: 'blockquote' }
       ],
       lists: [{ title: 'Bullet', value: 'bullet' }],
@@ -37,7 +38,7 @@ export default {
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
         // preference or highlighting by editors.
-        decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }, { title: 'Inline Code', value: 'code' }],
+        decorators: [{ title: 'Strong', value: 'strong' }, { title: 'Emphasis', value: 'em' }],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           // {

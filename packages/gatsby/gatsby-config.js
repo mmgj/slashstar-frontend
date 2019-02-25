@@ -2,8 +2,16 @@ require('dotenv').config();
 
 module.exports = {
   plugins: [
-    'gatsby-plugin-postcss',
+    // 'gatsby-plugin-postcss',
     'gatsby-plugin-sass',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-styled-components',
+      options: {
+        displayName: true,
+      },
+    },
     {
       resolve: 'gatsby-source-sanity',
       options: {

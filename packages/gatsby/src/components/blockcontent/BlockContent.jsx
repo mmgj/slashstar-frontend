@@ -1,48 +1,61 @@
-import BaseBlockContent from '@sanity/block-content-to-react';
 import React from 'react';
+import PropTypes from 'prop-types';
+import BaseBlockContent from '@sanity/block-content-to-react';
 
 import Figure from './Figure';
 import CodeBlock from './CodeBlock';
+import Heading from '../Layout/Heading';
 
 const serializers = {
   types: {
     block(props) {
-      switch (props.node.style) {
+      // Can't be bothered to do PropTypes for every case.
+      // eslint-disable-next-line
+      const { node: { language, style }, children } = props;
+      switch (style) {
         case 'h1':
-          return <h1 className="block-header h1head">{props.children}</h1>;
+          return <Heading h={1}>{children}</Heading>;
 
         case 'h2':
-          return <h2 className="block-header h2head">{props.children}</h2>;
+          return <Heading h={2}>{children}</Heading>;
 
         case 'h3':
-          return <h3 className="block-header h1head">{props.children}</h3>;
+          return <Heading h={3}>{children}</Heading>;
 
         case 'h4':
-          return <h4 className="block-header h1head">{props.children}</h4>;
+          return <Heading h={4}>{children}</Heading>;
 
         case 'blockquote':
-          return <blockquote className="block-blockquote">{props.children}</blockquote>;
+          return <blockquote className="block-blockquote">{children}</blockquote>;
 
         case 'code':
-          return <code className={`language-none`}>{props.children}</code>;
+          return <code className={`language-${language || 'javascript'}`}>{children}</code>;
 
         default:
-          return <p className="block-paragraph">{props.children}</p>;
+          return <p>{children}</p>;
       }
     },
     code(props) {
+      // eslint-disable-next-line
+      const { node: { code, language } } = props;
       return (
-        <CodeBlock language={props.node.language}>
-          {props.node.code}
+        <CodeBlock language={language}>
+          {code}
         </CodeBlock>
       );
     },
     figure(props) {
-      return <Figure {...props.node} />;
+      // eslint-disable-next-line
+      const { node } = props;
+      return <Figure {...node} />;
     },
   },
 };
 
 const BlockContent = ({ blocks }) => <BaseBlockContent blocks={blocks} serializers={serializers} />;
+
+BlockContent.propTypes = {
+  blocks: PropTypes.array.isRequired,
+};
 
 export default BlockContent;

@@ -1,0 +1,17 @@
+{
+  "name": "codeblock",
+  "author": "Martin Jacobsen <mj@evokedset.no>",
+  "version": "1.0.0",
+  "description": "Syntax highlighted code block element using prism.js (bundled).",
+  "main": "CodeBlock.jsx",
+  "keywords": [
+    "gatsby",
+    "sanity",
+    "prismjs"
+  ],
+  "peerDependencies": {
+    "react": "^16.8.3",
+    "prop-types":"^15.7.2"
+  },
+  "license": "MIT"
+}

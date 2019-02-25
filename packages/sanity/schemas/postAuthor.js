@@ -19,7 +19,8 @@ export default {
         list: [
           { title: 'Illustration', value: 'illustration' },
           { title: 'Text', value: 'text' },
-          { title: 'Editor', value: 'editor' }
+          { title: 'Editor', value: 'editor' },
+          { title: 'Code', value: 'code' },
         ]
       }
     }

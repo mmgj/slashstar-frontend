@@ -2,26 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+
 import { imageUrlFor, buildImageObj } from '../../lib/helpers/sanity-helpers';
 
 const StyledFigure = styled.figure`
   margin: 2rem 0;
   padding: 0;
-
-  &.img {
+  img {
     width: 100%;
     height: auto;
   }
 `;
 
-function Figure(props) {
+const Figure = (props) => {
   const { asset, alt, caption } = props;
   return (
-    <StyledFigure className="block-inline-figure">
+    <StyledFigure>
       {asset && (
         <img
           src={imageUrlFor(buildImageObj(props))
             .width(1200)
+            .fit('max')
             .url()}
           alt={alt}
         />
@@ -29,7 +30,7 @@ function Figure(props) {
       {caption && <figcaption className="block-inline-figure__caption">{caption}</figcaption>}
     </StyledFigure>
   );
-}
+};
 
 Figure.defaultProps = {
   alt: 'inline-image',

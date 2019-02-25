@@ -12,13 +12,12 @@ import BlockContent from '../components/blockcontent/BlockContent';
 const BlogPostTemplate = (props) => {
   const { data, errors } = props;
   const post = data && data.post;
-  console.log('post: ', post);
   return (
     <div>
       {errors && <h1>Errored!</h1>}
-      {post && (
-        <Layout siteTitle={post.title}>
-          {post._rawBody && <BlockContent blocks={post._rawBody} />}
+      {data && (
+        <Layout pageType="post" pageData={data}>
+          {post && post._rawBody && <BlockContent blocks={post._rawBody} />}
         </Layout>
       )}
     </div>
@@ -77,6 +76,15 @@ export const query = graphql`
         }
         asset {
           _id
+          fluid(maxWidth: 1200) {
+            ...GatsbySanityImageFluid
+          }
+          metadata {
+            lqip
+            dimensions {
+              aspectRatio
+            }
+          }
         }
         alt
       }
