@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,400i,800,800i|Roboto:400,400i,700,700i');
     ${'' /* font-size: ${theme.sizes.base}; */}
-    font-size: 62.5%;
+    font-size: 10px;
     box-sizing: border-box;
   }
   body {
