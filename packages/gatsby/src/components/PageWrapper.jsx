@@ -2,8 +2,8 @@ import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import PropTypes from 'prop-types';
+import '../styles/main.css';
 import theme from '../themes/default-theme';
-// import theme from '../../themes/terrible-theme';
 
 
 const setupQuery = graphql`
@@ -19,11 +19,7 @@ const setupQuery = graphql`
 
 const GlobalStyles = createGlobalStyle`
   html {
-    @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,400i,800,800i|Roboto:400,400i,700,700i');
-    ${'' /* font-size: ${theme.sizes.base}; */}
-    font-size: 10px;
-    box-sizing: border-box;
-  }
+
   body {
     font-family: ${theme.fonts.body};
     font-size: ${theme.sizes.body};
@@ -31,11 +27,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     h1, h2, h3 {
       font-family: ${theme.fonts.headings};
+      }
     }
-
   }
 `;
-
 
 const PageWrapper = ({ children }) => (
   // Add react-helmet here
