@@ -20,8 +20,8 @@ const setupQuery = graphql`
 const GlobalStyles = createGlobalStyle`
   html {
     @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,400i,800,800i|Roboto:400,400i,700,700i');
-
-    font-size: ${theme.sizes.base};
+    ${'' /* font-size: ${theme.sizes.base}; */}
+    font-size: 62.5%;
     box-sizing: border-box;
   }
   body {
@@ -32,6 +32,7 @@ const GlobalStyles = createGlobalStyle`
     h1, h2, h3 {
       font-family: ${theme.fonts.headings};
     }
+
   }
 `;
 

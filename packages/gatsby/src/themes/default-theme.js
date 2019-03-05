@@ -15,9 +15,9 @@ export default {
   weights,
   media,
   colors: {
+    ...colors,
     h1: colors.primary,
     h2: colors.secondary,
     h3: colors.tertiary,
-    ...colors,
   },
 };
