@@ -1,38 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-// import Container from '../components/container';
-// import GraphQLErrorList from '../components/graphql-error-list';
-// import BlogPost from '../components/blog-post';
-// import SEO from '../components/seo';
-import Layout from '../components/Layout';
+import styled from 'styled-components';
+
+import PageWrapper from '../components/PageWrapper';
+import Header from '../components/Header';
+import BigImage from '../components/BigImage';
+import PageTitle from '../components/PageTitle';
 import BlockContent from '../components/blockcontent/BlockContent';
+import PageMeta from '../components/PageMeta';
+import Footer from '../components/Footer';
 
 
-const BlogPostTemplate = (props) => {
-  const { data, errors } = props;
-  const post = data && data.post;
+const BlogPostTemplate = ({ data, errors }) => {
+  const { post: { mainImage, title, _rawBody: body, authors, publishedAt, categories } } = data;
   return (
-    <div>
+    <>
       {errors && <h1>Errored!</h1>}
       {data && (
-        <Layout pageType="post" pageData={data}>
-          {post && post._rawBody && <BlockContent blocks={post._rawBody} />}
-        </Layout>
+        <PageWrapper>
+          <Header />
+          <BigImage asset={mainImage.asset} />
+          <main>
+            <PageTitle h={1}>{title}</PageTitle>
+            <BlockContent blocks={body} />
+          </main>
+          <PageMeta data={{ categories, publishedAt, authors }} />
+          <Footer />
+        </PageWrapper>
       )}
-    </div>
-    // <Layout>
-    //   {errors && <SEO title="GraphQL Error" />}
-    //   {post && <SEO title={post.title || 'Untitled'} />}
-
-  //   {errors && (
-  //     <Container>
-  //       <GraphQLErrorList errors={errors} />
-  //     </Container>
-  //   )}
-
-  //   {post && <BlogPost {...post} />}
-  // </Layout>
+    </>
   );
 };
 
@@ -106,8 +103,6 @@ export const query = graphql`
               right
             }
             hotspot {
-              _key
-              _type
               x
               y
               height

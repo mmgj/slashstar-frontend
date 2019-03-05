@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import Layout from '../components/Layout/Layout';
+import PageWrapper from '../components/PageWrapper';
 // import Container from '../components/container';
 // import GraphQLErrorList from '../components/graphql-error-list';
 // import Project from '../components/project';
@@ -15,10 +15,10 @@ const ProjectTemplate = (props) => {
   console.log('data: ', data);
 
   return (
-    <Layout pageType="project" pageData={data}>
+    <PageWrapper pageType="project" pageData={data}>
       {errors && <h1>Errored!</h1>}
       {project && <h1>OK!</h1>}
-    </Layout>
+    </PageWrapper>
     // <Layout>
     //   {errors && <SEO title="GraphQL Error" />}
     //   {project && <SEO title={project.title || 'Untitled'} />}

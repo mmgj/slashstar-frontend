@@ -4,7 +4,7 @@ import BaseBlockContent from '@sanity/block-content-to-react';
 
 import Figure from './Figure';
 import CodeBlock from './CodeBlock';
-import Heading from '../Layout/Heading';
+import Heading from '../Heading';
 
 const serializers = {
   types: {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { imageUrlFor, buildImageObj } from '../../lib/helpers/sanity-helpers';
+import { imageUrlFor, buildImageObj } from '../lib/helpers/sanity-helpers';
 
 const titleCase = str => `${str.substr(0, 1).toUpperCase()}${str.substr(1)}`;
 

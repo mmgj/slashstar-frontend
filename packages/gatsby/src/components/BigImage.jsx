@@ -24,7 +24,7 @@ const Figure = styled.figure`
   }
 `;
 
-const BigImage = ({ asset }) => <Figure><Img fluid={asset.fluid} /></Figure>;
+const BigImage = ({ asset }) => <Figure className="main-image"><Img fluid={asset.fluid} /></Figure>;
 
 
 BigImage.propTypes = {
