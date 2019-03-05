@@ -7,6 +7,13 @@ import CodeBlock from './CodeBlock';
 import Heading from '../Heading';
 
 const serializers = {
+  // FIXME: ⬇ Make this work!
+  marks: {
+    internalLink(props) {
+      // eslint-disable-next-line
+      return <span>oops</span>;
+    },
+  },
   types: {
     block(props) {
       // Can't be bothered to do PropTypes for every case.

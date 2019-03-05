@@ -8,7 +8,7 @@ import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import PropTypes from 'prop-types';
-// ⬇⬇ It seems this is necessary for putting styles on the root <html> element.
+// ⬇⬇ It seems including an actual css file is necessary for putting styles on the root <html> element.
 import '../styles/main.css';
 import theme from '../themes/default-theme';
 
@@ -42,7 +42,7 @@ const PageWrapper = ({ children }) => (
   // Add react-helmet here
   <StaticQuery
     query={setupQuery}
-    render={({ site }) => {
+    render={({ site }) => { // eslint-disable-line
       return (
         <ThemeProvider theme={theme}>
           <>

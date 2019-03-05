@@ -33,6 +33,7 @@ const BlogPostTemplate = ({ data, errors }) => {
   const {
     post: { mainImage, title, _rawBody: body, authors, publishedAt, categories },
   } = data;
+  console.log('body: ', body);
   return (
     <>
       {errors && <h1>Errored!</h1>}
