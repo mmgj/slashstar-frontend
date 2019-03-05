@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { darken } from 'polished';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import PropTypes from 'prop-types';
 import theme from '../themes/default-theme';
 // import theme from '../../themes/terrible-theme';
@@ -29,34 +28,25 @@ const GlobalStyles = createGlobalStyle`
     font-family: ${theme.fonts.body};
     font-size: ${theme.sizes.body};
     color: ${theme.colors.fg};
+    margin: 0;
     h1, h2, h3 {
       font-family: ${theme.fonts.headings};
     }
   }
 `;
 
-const Grid = styled.div`
-    display: grid;
-    grid-template-columns: 75% 25%;
-    grid-template-rows: auto 1fr auto;
-    grid-gap: 1em;
-    header,
-    footer,
-    .main-image {
-      grid-column: 1 / span 2;
-    }
-`;
 
 const PageWrapper = ({ children }) => (
+  // Add react-helmet here
   <StaticQuery
     query={setupQuery}
     render={({ site }) => {
       return (
         <ThemeProvider theme={theme}>
-          <Grid>
+          <>
             <GlobalStyles />
             {children}
-          </Grid>
+          </>
         </ThemeProvider>
       );
     }}

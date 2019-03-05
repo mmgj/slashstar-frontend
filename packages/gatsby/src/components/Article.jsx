@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledArticle = styled.article`
-  padding: 0 5rem;
+  padding: 0 2rem;
 `;
 
 const Article = ({ children }) =>

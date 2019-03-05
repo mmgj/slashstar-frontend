@@ -10,23 +10,46 @@ import PageTitle from '../components/PageTitle';
 import BlockContent from '../components/blockcontent/BlockContent';
 import PageMeta from '../components/PageMeta';
 import Footer from '../components/Footer';
+import Article from '../components/Article';
 
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 1em;
+  overflow-x: hidden; //dumb bug
+  header,
+  footer,
+  .main-image {
+    grid-column: 1 / span 2;
+  }
+  @media (${props => props.theme.media.maxMed}) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 
 const BlogPostTemplate = ({ data, errors }) => {
-  const { post: { mainImage, title, _rawBody: body, authors, publishedAt, categories } } = data;
+  const {
+    post: { mainImage, title, _rawBody: body, authors, publishedAt, categories },
+  } = data;
   return (
     <>
       {errors && <h1>Errored!</h1>}
       {data && (
         <PageWrapper>
-          <Header />
-          <BigImage asset={mainImage.asset} />
-          <main>
-            <PageTitle h={1}>{title}</PageTitle>
-            <BlockContent blocks={body} />
-          </main>
-          <PageMeta data={{ categories, publishedAt, authors }} />
-          <Footer />
+          <GridContainer>
+            <Header />
+            <BigImage asset={mainImage.asset} />
+            <main>
+              <PageTitle h={1}>{title}</PageTitle>
+              <Article>
+                <BlockContent blocks={body} />
+              </Article>
+            </main>
+            <PageMeta data={{ categories, publishedAt, authors }} />
+            <Footer />
+          </GridContainer>
         </PageWrapper>
       )}
     </>

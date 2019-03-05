@@ -1,40 +1,41 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
-
 
 import Brand from './Brand';
 import NavBar from './NavBar';
 
 const StyledHeader = styled.header`
-  width: calc(100% - 3.12rem);
-  padding: 0 2.6rem 1.6rem 1.6rem;
+  padding: 0 2rem;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-`;
-
-const headerQuery = graphql`
-  query HeaderQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      title
+  @media (${props => props.theme.media.maxMed}) {
+      display: flex;
+      flex-direction: column-reverse;
     }
-  }
 `;
 
-const Header = () => (
-  <StaticQuery
-    query={headerQuery}
-    render={({ site }) => (
-      <StyledHeader>
-        <NavBar />
-        <Brand h={2} colored>
-          {site.title}
-        </Brand>
-      </StyledHeader>
-    )}
-  />
-);
+const Header = () => {
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+        title
+      }
+    }
+  `);
+
+  return (
+    <StyledHeader>
+      <NavBar />
+      <Brand h={2} colored>
+        {data.site.title}
+      </Brand>
+    </StyledHeader>
+  );
+};
 
 Header.propTypes = {};
 
