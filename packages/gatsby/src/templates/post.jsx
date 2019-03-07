@@ -4,13 +4,13 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import PageWrapper from '../components/PageWrapper';
-import Header from '../components/Header';
+import PageHeader from '../components/PageHeader';
+import PageFooter from '../components/PageFooter';
 import BigImage from '../components/BigImage';
 import PageTitle from '../components/PageTitle';
 import BlockContent from '../components/blockcontent/BlockContent';
 import PageMeta from '../components/PageMeta';
-import Footer from '../components/Footer';
-import Article from '../components/Article';
+import Article from '../components/atoms/Article';
 
 const GridContainer = styled.div`
   display: grid;
@@ -23,7 +23,7 @@ const GridContainer = styled.div`
   .main-image {
     grid-column: 1 / span 2;
   }
-  @media (${props => props.theme.media.maxMed}) {
+  @media (max-width: ${props => props.theme.media.medium}) {
     display: flex;
     flex-direction: column;
   }
@@ -40,7 +40,7 @@ const BlogPostTemplate = ({ data, errors }) => {
       {data && (
         <PageWrapper>
           <GridContainer>
-            <Header />
+            <PageHeader />
             <BigImage asset={mainImage.asset} />
             <main>
               <PageTitle h={1}>{title}</PageTitle>
@@ -49,7 +49,7 @@ const BlogPostTemplate = ({ data, errors }) => {
               </Article>
             </main>
             <PageMeta data={{ categories, publishedAt, authors }} />
-            <Footer />
+            <PageFooter />
           </GridContainer>
         </PageWrapper>
       )}

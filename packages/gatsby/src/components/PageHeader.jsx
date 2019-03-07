@@ -12,13 +12,13 @@ const StyledHeader = styled.header`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  @media (${props => props.theme.media.maxMed}) {
-      display: flex;
-      flex-direction: column-reverse;
-    }
+  @media (max-width: ${props => props.theme.media.medium}) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 `;
 
-const Header = () => {
+const PageHeader = () => {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -26,7 +26,6 @@ const Header = () => {
       }
     }
   `);
-
   return (
     <StyledHeader>
       <NavBar />
@@ -37,6 +36,6 @@ const Header = () => {
   );
 };
 
-Header.propTypes = {};
+PageHeader.propTypes = {};
 
-export default Header;
+export default PageHeader;

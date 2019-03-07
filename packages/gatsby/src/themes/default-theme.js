@@ -1,4 +1,4 @@
-import { sizes, colors, weights, media } from './theme-variables';
+import { sizes, colors, weights, media, fontSizes } from './base-theme';
 
 const primaryFont = 'Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif';
 const secondaryFont = '"Montserrat Alternates", sans-serif';
@@ -11,13 +11,11 @@ export default {
     headings: secondaryFont,
     ui: tertiaryFont,
   },
+  fontSizes,
   sizes,
   weights,
   media,
   colors: {
     ...colors,
-    h1: colors.primary,
-    h2: colors.secondary,
-    h3: colors.tertiary,
   },
 };

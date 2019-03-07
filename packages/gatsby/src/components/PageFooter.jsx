@@ -8,9 +8,6 @@ const StyledFooter = styled.div`
   margin: 0 auto;
   display: flex;
 
-  @media ${props => props.theme.media.minSmall} {
-    padding: 2em;
-  }
   .footer-siteinfo {
     margin: 0 auto;
     text-align: center;
@@ -22,7 +19,7 @@ const StyledFooter = styled.div`
   }
 `;
 
-const Footer = () => { // eslint-disable-line
+const PageFooter = () => { // eslint-disable-line
   return (
     <StyledFooter>
       <div className="footer-siteinfo">
@@ -34,7 +31,7 @@ const Footer = () => { // eslint-disable-line
   );
 };
 
-Footer.propTypes = {
+PageFooter.propTypes = {
 };
 
-export default Footer;
+export default PageFooter;

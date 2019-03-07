@@ -1,4 +1,4 @@
-import { sizes, colors, weights, media } from './theme-variables';
+import { sizes, colors, weights, media } from './base-theme';
 
 const imp = `
   @import url('https://fonts.googleapis.com/css?family=Chewy|Luckiest+Guy');

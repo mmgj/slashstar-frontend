@@ -4,7 +4,7 @@ import BaseBlockContent from '@sanity/block-content-to-react';
 
 import Figure from './Figure';
 import CodeBlock from './CodeBlock';
-import Heading from '../Heading';
+import Heading from '../atoms/Heading';
 
 const serializers = {
   // FIXME: ⬇ Make this work!
