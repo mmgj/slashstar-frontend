@@ -54,17 +54,17 @@ export const colors = {
 
 
 export const media = {
-  xlarge: 1920,
-  large: 1440,
+  xlarge: 1400,
+  large: 1200,
   medium: 1024,
-  small: 640,
+  small: 600,
   xsmall: 400,
 };
 
 export const fontSizes = {
-  [media.xlarge]: { h1: '6.8rem', h2: '4.4rem' },
-  [media.large]: { h1: '6.8rem', h2: '4.4rem' },
-  [media.medium]: { h1: '6.0rem', h2: '4.0rem' },
-  [media.small]: { h1: '4.4rem', h2: '3.0rem' },
-  [media.xsmall]: { h1: '3.8rem', h2: '2.4rem' },
+  [media.xlarge]:   { body: '1.6rem', h15: '7.4rem', h10: '6.8rem', h1: '6.2rem', h2: '3.6rem', h3: '1.75rem', h4: '1.125rem' },
+  [media.large]:    { body: '1.6rem', h15: '6.6rem', h10: '6.0rem', h1: '5.2rem', h2: '3.6rem', h3: '1.75rem', h4: '1.125rem' },
+  [media.medium]:   { body: '1.6rem', h15: '6.4rem', h10: '5.8rem', h1: '4.6rem', h2: '3.6rem', h3: '1.75rem', h4: '1.125rem' },
+  [media.small]:    { body: '1.6rem', h15: '5.8rem', h10: '5.2rem', h1: '3.6rem', h2: '3.2rem', h3: '1.5rem', h4: '1.1rem' },
+  [media.xsmall]:   { body: '1.6rem', h15: '5.0rem', h10: '4.6rem', h1: '2.8rem', h2: '3.0rem', h3: '1.5rem', h4: '1.1rem' },
 };

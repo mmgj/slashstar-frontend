@@ -7,7 +7,7 @@ const StyledHeading = styled.h1`
   font-size: ${props => props.theme.sizes[`h${props.h}`]};
   ${(props) => {
     const hstr = `h${props.h}`;
-    return Object.keys(props.theme.media).map(key => (`@media(max-width: ${props.theme.media[key]}px) { font-size: ${props.theme.fontSizes[props.theme.media[key]][hstr]}; }`));
+    return Object.keys(props.theme.media).reverse().map(key => (`@media(min-width: ${props.theme.media[key]}px) { font-size: ${props.theme.fontSizes[props.theme.media[key]][hstr]}; }`));
   }}
 `;
 
