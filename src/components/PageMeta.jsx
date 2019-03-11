@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { format, distanceInWords, differenceInDays } from 'date-fns'; // eslint-disable-line
 import RoleList from './RoleList';

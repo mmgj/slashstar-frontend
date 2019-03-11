@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 
 const StyledNav = styled.nav`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: inline-block;
   ul {
     padding: 0;
     list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     li {
       display: inline-block;
       margin: .5rem;
@@ -28,8 +29,9 @@ const NavBar = () =>
   (
     <StyledNav>
       <ul>
-        <li><Link to="/about"> Page One</Link></li>
-        <li><Link to="/contact"> Page Two</Link></li>
+        <li><Link to="/about"> Home</Link></li>
+        <li><Link to="/contact"> About</Link></li>
+        <li><Link to="/contact"> Contact</Link></li>
       </ul>
     </StyledNav>
   );

@@ -6,12 +6,7 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-plugin-styled-components',
-      options: {
-        displayName: true,
-      },
-    },
+
     {
       resolve: 'gatsby-source-sanity',
       options: {

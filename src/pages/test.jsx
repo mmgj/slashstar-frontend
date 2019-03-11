@@ -1,23 +1,38 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import PageWrapper from '../components/PageWrapper';
 import Heading from '../components/atoms/Heading';
 import Header from '../components/atoms/Header';
 import Article from '../components/atoms/Article';
-import Nav from '../components/atoms/Nav';
+import NavBar from '../components/NavBar';
+import Brand from '../components/Brand';
 
 const Grid = styled.div`
   display: grid;
   margin: 0 auto;
 
   grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: auto 1rem;
+  grid-auto-rows: min-content;
+
+  header, footer {
+    grid-column: 1 / -1;
+    min-height: 100px;
+    padding: 20px;
+    border: 1px solid green;
+  }
+  footer {
+    grid-row: - 1;
+  }
+  header {
+    grid-row: 1;
+  }
+
   picture {
     height: 0;
     padding-bottom: 50%;
     width: 100%;
     overflow: hidden;
+    grid-column: 1 / -1;
     img {
       width: 100%;
       height: auto;
@@ -25,8 +40,7 @@ const Grid = styled.div`
   }
   article {
     background: #ccc;
-    grid-column: 2 / 13 ;
-    /* grid-row-start: 2; */
+    grid-column: 2 / 13;
     border: 1px solid black;
     h1, h2, section {
       padding: 0 2rem;
@@ -36,31 +50,54 @@ const Grid = styled.div`
     border: 1px solid orange;
     grid-column: 13 / 16;
   }
+  @media (min-width: 1200px) {
+    picture {
+    padding-bottom: 30%;
+      img {
+        transform: translateY(-20%);
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    article {
+      background: #ccc;
+      grid-column: 1 / 13;
+    }
+    aside {
+      min-height: 100px;
+      border: 3px solid hotpink;
+      grid-column: 13 / 17;
+      grid-row: 3;
+    }
+  }
+  @media (max-width: 799px) {
+    article {
+      background: #ccc;
+      grid-column: 1 / 17;
+    }
+    aside {
+      min-height: 100px;
+      border: 1px solid orange;
+      grid-column: 1 / 17;
+      grid-row: auto;
+    }
+  }
+
 `;
 
 
-const TestPage = () => {
-  return (
+const TestPage = () =>
+  (
     <PageWrapper>
-      <Header>
-        <div className="brand">DuckDog.dev</div>
-        <Nav>
-          <ul>
-            <li>
-              <Link to="/">Leave</Link>
-            </li>
-            <li>
-              <Link to="/grf">404</Link>
-            </li>
-          </ul>
-        </Nav>
-
-      </Header>
       <Grid>
+        <Header>
+          <NavBar />
+          <Brand colored>Duck Dog Dev</Brand>
+        </Header>
+        <picture>
+          <img alt="Random Picsum" src="https://picsum.photos/1000/500/?random" />
+        </picture>
         <Article>
-          <picture>
-            <img alt="Random Picsum" src="https://picsum.photos/1000/500/?random" />
-          </picture>
           <Heading>I am the big cool header yeah</Heading>
           <Heading h={2}>I am a smaller header</Heading>
           <section>
@@ -76,11 +113,10 @@ const TestPage = () => {
         <aside>
           I am a sidebar
         </aside>
+        <footer>Here is some contact info</footer>
       </Grid>
-      <footer>Here is some contact info</footer>
     </PageWrapper>
   );
-};
 
 TestPage.propTypes = {
 };
