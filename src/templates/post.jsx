@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import PageWrapper from '../components/PageWrapper';
 import PageHeader from '../components/PageHeader';
@@ -11,6 +11,8 @@ import PageTitle from '../components/PageTitle';
 import BlockContent from '../components/blockcontent/BlockContent';
 import PageMeta from '../components/PageMeta';
 import Article from '../components/atoms/Article';
+import StyleInjector from '../components/StyleInjector';
+import NavBar from '../components/NavBar';
 
 const GridContainer = styled.div`
   display: grid;
@@ -31,26 +33,31 @@ const GridContainer = styled.div`
 
 const BlogPostTemplate = ({ data, errors }) => {
   const {
-    post: { mainImage, title, _rawBody: body, authors, publishedAt, categories },
+    post: { mainImage, title, _rawBody: body, postStyles, authors, publishedAt, categories },
   } = data;
-  console.log('body: ', body);
+  console.log('mainImage: ', mainImage);
+  console.log('postStyles: ', postStyles);
   return (
     <>
       {errors && <h1>Errored!</h1>}
       {data && (
         <PageWrapper>
-          <GridContainer>
-            <PageHeader />
-            <BigImage asset={mainImage.asset} />
-            <main>
-              <PageTitle h={1}>{title}</PageTitle>
-              <Article>
-                <BlockContent blocks={body} />
-              </Article>
-            </main>
-            <PageMeta data={{ categories, publishedAt, authors }} />
-            <PageFooter />
-          </GridContainer>
+          <StyleInjector code={postStyles}>
+          <PageHeader></PageHeader>
+            {mainImage.asset && (
+                <div className="main-image-container">
+                  <BigImage asset={mainImage.asset}></BigImage>
+                </div>
+              )}
+            <article>
+              <h1>{title}</h1>
+              <BlockContent blocks={body} />
+            </article>
+            <aside>
+              I am a sidebar
+            </aside>
+            <footer>Here is some contact info</footer>
+          </StyleInjector>
         </PageWrapper>
       )}
     </>
@@ -77,6 +84,9 @@ export const query = graphql`
       categories {
         _id
         title
+      }
+      postStyles {
+        code
       }
       mainImage {
         crop {

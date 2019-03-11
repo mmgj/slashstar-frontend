@@ -57,7 +57,7 @@ export const media = {
   xlarge: 1400,
   large: 1200,
   medium: 1024,
-  small: 600,
+  small: 700,
   xsmall: 400,
 };
 

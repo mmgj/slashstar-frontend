@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import Brand from './Brand';
 import NavBar from './NavBar';
@@ -12,6 +12,7 @@ const StyledHeader = styled.header`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   @media (max-width: ${props => props.theme.media.medium}) {
     display: flex;
     flex-direction: column-reverse;

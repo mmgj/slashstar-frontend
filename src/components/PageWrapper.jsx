@@ -6,7 +6,8 @@
 
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { ThemeProvider } from 'emotion-theming';
+import { Global, css } from '@emotion/core';
 import PropTypes from 'prop-types';
 // ⬇⬇ It seems including an actual css file is necessary for putting styles on the root <html> element.
 import '../styles/main.css';
@@ -24,16 +25,13 @@ const setupQuery = graphql`
   }
 `;
 
-const GlobalStyles = createGlobalStyle`
+const globalStyle = css`
   html {
     body {
       font-family: ${theme.fonts.body};
       font-size: ${theme.sizes.body};
       color: ${theme.colors.fg};
       margin: 0;
-      h1, h2, h3 {
-        font-family: ${theme.fonts.headings};
-      }
     }
   }
 `;
@@ -46,7 +44,7 @@ const PageWrapper = ({ children }) => (
       return (
         <ThemeProvider theme={theme}>
           <>
-            <GlobalStyles />
+            <Global styles={globalStyle} />
             {children}
           </>
         </ThemeProvider>
