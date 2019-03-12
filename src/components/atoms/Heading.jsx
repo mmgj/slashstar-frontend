@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const StyledHeading = styled.h1`
+  font-family: ${props => props.theme.fonts.headings};
   font-weight: ${props => props.theme.weights[`h${props.h}`]};
   font-size: ${props => props.theme.sizes[`h${props.h}`]};
   ${(props) => {

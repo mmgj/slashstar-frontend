@@ -22,7 +22,7 @@ const Figure = styled.figure`
   }
 `;
 
-const BigImage = ({ asset }) => <Figure className="main-image"><Img imgStyle={{ transitionDelay: '0s' }} fluid={asset.fluid} /></Figure>;
+const BigImage = ({ asset }) => <Figure><Img imgStyle={{ transitionDelay: '0s' }} fluid={asset.fluid} /></Figure>;
 
 
 BigImage.propTypes = {

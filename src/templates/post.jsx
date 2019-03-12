@@ -5,59 +5,102 @@ import styled from '@emotion/styled';
 
 import PageWrapper from '../components/PageWrapper';
 import PageHeader from '../components/PageHeader';
-import PageFooter from '../components/PageFooter';
 import BigImage from '../components/BigImage';
-import PageTitle from '../components/PageTitle';
 import BlockContent from '../components/blockcontent/BlockContent';
 import PageMeta from '../components/PageMeta';
-import Article from '../components/atoms/Article';
-import StyleInjector from '../components/StyleInjector';
-import NavBar from '../components/NavBar';
+import Heading from '../components/atoms/Heading';
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: 75% 25%;
-  grid-template-rows: auto 1fr auto;
-  grid-gap: 1em;
-  overflow-x: hidden; //dumb bug
-  header,
-  footer,
-  .main-image {
-    grid-column: 1 / span 2;
+  margin: 0 auto;
+
+  grid-template-columns: repeat(16, 1fr);
+  grid-auto-rows: min-content;
+
+  header, footer {
+    grid-column: 1 / -1;
+    min-height: 100px;
+    padding: 20px;
   }
-  @media (max-width: ${props => props.theme.media.medium}) {
-    display: flex;
-    flex-direction: column;
+  footer {
+    grid-row: - 1;
+  }
+  header {
+    grid-row: 1;
+  }
+  figure {
+    height: 0;
+    padding-bottom: 50%;
+    width: 100%;
+    overflow: hidden;
+    grid-column: 1 / -1;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  article {
+    z-index: 100;
+    padding: 0 2.5rem 10vh 2.5rem;
+    margin-top: -15vw;
+    background: white;
+    grid-column: 2 / 12;
+  }
+  aside {
+    grid-column: 13 / 16;
+  }
+  @media (min-width: 1200px) {
+    picture {
+    padding-bottom: 30%;
+      img {
+        transform: translateY(-20%);
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    article {
+      grid-column: 2 / 13;
+    }
+    aside {
+      grid-column: 13 / 17;
+      grid-row: 3;
+    }
+  }
+  @media (max-width: 799px) {
+    article {
+      grid-column: 2 / 16;
+    }
+    aside {
+      min-height: 100px;
+      grid-column: 1 / 17;
+      grid-row: auto;
+    }
   }
 `;
 
 const BlogPostTemplate = ({ data, errors }) => {
   const {
-    post: { mainImage, title, _rawBody: body, postStyles, authors, publishedAt, categories },
+    post: { mainImage, title, _rawBody: body },
   } = data;
-  console.log('mainImage: ', mainImage);
-  console.log('postStyles: ', postStyles);
   return (
     <>
       {errors && <h1>Errored!</h1>}
       {data && (
         <PageWrapper>
-          <StyleInjector code={postStyles}>
-          <PageHeader></PageHeader>
+          <GridContainer>
+            <PageHeader />
             {mainImage.asset && (
-                <div className="main-image-container">
-                  <BigImage asset={mainImage.asset}></BigImage>
-                </div>
-              )}
+              <BigImage asset={mainImage.asset} />
+            )}
             <article>
-              <h1>{title}</h1>
+              <Heading h={1}>{title}</Heading>
               <BlockContent blocks={body} />
             </article>
-            <aside>
-              I am a sidebar
-            </aside>
+            <PageMeta
+              data={data.post}
+            />
             <footer>Here is some contact info</footer>
-          </StyleInjector>
+          </GridContainer>
         </PageWrapper>
       )}
     </>
@@ -84,9 +127,6 @@ export const query = graphql`
       categories {
         _id
         title
-      }
-      postStyles {
-        code
       }
       mainImage {
         crop {

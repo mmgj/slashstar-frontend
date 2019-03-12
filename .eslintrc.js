@@ -7,6 +7,7 @@ module.exports = {
     "rules": {
         "import/extensions": 0,
         "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 5 }],
+        "react/jsx-filename-extension": 0,
         "no-confusing-arrow": ["error", {"allowParens": true }],
         "react/jsx-one-expression-per-line": [0, { "allow": "single-child" }],
         "max-len": 0,

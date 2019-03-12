@@ -20,7 +20,6 @@ const setupQuery = graphql`
       title
       description
       keywords
-      author
     }
   }
 `;
@@ -28,6 +27,7 @@ const setupQuery = graphql`
 const globalStyle = css`
   html {
     body {
+      ${theme.setup}
       font-family: ${theme.fonts.body};
       font-size: ${theme.sizes.body};
       color: ${theme.colors.fg};

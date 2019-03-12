@@ -82,7 +82,6 @@ const Grid = styled.div`
       grid-row: auto;
     }
   }
-
 `;
 
 
