@@ -90,7 +90,7 @@ const TestPage = () =>
     <PageWrapper>
       <Grid>
         <Header>
-          /*FIXME: Bad => <NavBar /> */
+
           <Brand colored>Duck Dog Dev</Brand>
         </Header>
         <picture>
