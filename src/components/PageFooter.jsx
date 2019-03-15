@@ -1,37 +1,29 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
-const StyledFooter = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  padding: 1.5em;
-  margin: 0 auto;
+
+const StyledFooter = styled.footer`
   display: flex;
-
-  .footer-siteinfo {
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1.4rem;
-    line-height: .9rem;
-    & a {
-      color: inherit;
-    }
-  }
+  width: 100%;
+  height: 5vw;
+  background: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.white};
+  justify-content: center;
+  align-items: center;
+  font-size: smaller;
 `;
 
-const PageFooter = () => { // eslint-disable-line
+const PageFooter = ({ children }) => {
   return (
     <StyledFooter>
-      <div className="footer-siteinfo">
-        © {new Date().getFullYear()}, Built with <a href="https://www.sanity.io">Sanity</a> &amp;
-        {' '}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </div>
+      {children}
     </StyledFooter>
   );
 };
 
 PageFooter.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default PageFooter;

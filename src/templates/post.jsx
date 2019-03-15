@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 
 import PageWrapper from '../components/PageWrapper';
 import PageHeader from '../components/PageHeader';
+import PageFooter from '../components/PageFooter';
 import BigImage from '../components/BigImage';
 import BlockContent from '../components/blockcontent/BlockContent';
 import PageMeta from '../components/PageMeta';
@@ -80,27 +81,29 @@ const GridContainer = styled.div`
 
 const BlogPostTemplate = ({ data, errors }) => {
   const {
-    post: { mainImage, title, _rawBody: body },
+    post: { mainImage, title, _rawBody: body, bespoke },
   } = data;
   return (
     <>
       {errors && <h1>Errored!</h1>}
       {data && (
         <PageWrapper>
-          <GridContainer>
-            <PageHeader />
-            {mainImage.asset && (
-              <BigImage asset={mainImage.asset} />
+          {bespoke
+            ? (<h1>I am speshul</h1>)
+            : (
+              <GridContainer>
+                <PageHeader />
+                {mainImage.asset && (
+                  <BigImage asset={mainImage.asset} />
+                )}
+                <article>
+                  <Heading h={1}>{title}</Heading>
+                  <BlockContent blocks={body} />
+                </article>
+                <PageMeta data={data.post} />
+                <PageFooter>Made with Love and Code</PageFooter>
+              </GridContainer>
             )}
-            <article>
-              <Heading h={1}>{title}</Heading>
-              <BlockContent blocks={body} />
-            </article>
-            <PageMeta
-              data={data.post}
-            />
-            <footer>Here is some contact info</footer>
-          </GridContainer>
         </PageWrapper>
       )}
     </>
@@ -122,74 +125,7 @@ export default BlogPostTemplate;
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
     post: sanityPost(id: { eq: $id }) {
-      id
-      publishedAt
-      categories {
-        _id
-        title
-      }
-      mainImage {
-        crop {
-          _key
-          _type
-          top
-          bottom
-          left
-          right
-        }
-        hotspot {
-          _key
-          _type
-          x
-          y
-          height
-          width
-        }
-        asset {
-          _id
-          fluid(maxWidth: 1200) {
-            ...GatsbySanityImageFluid
-          }
-          metadata {
-            lqip
-            dimensions {
-              aspectRatio
-            }
-          }
-        }
-        alt
-      }
-      title
-      slug {
-        current
-      }
-      _rawBody
-      authors {
-        _key
-        person {
-          image {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-          }
-          name
-        }
-        roles
-      }
+      ...postQuery
     }
   }
 `;

@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import PageWrapper from '../components/PageWrapper';
-import Heading from '../components/atoms/Heading';
-import Header from '../components/atoms/Header';
-import Article from '../components/atoms/Article';
-import NavBar from '../components/NavBar';
-import Brand from '../components/Brand';
+import PageWrapper from '../../components/PageWrapper';
+import Heading from '../../components/atoms/Heading';
+import Brand from '../../components/Brand';
 
 const Grid = styled.div`
   display: grid;
@@ -89,14 +86,13 @@ const TestPage = () =>
   (
     <PageWrapper>
       <Grid>
-        <Header>
-
+        <header>
           <Brand colored>Duck Dog Dev</Brand>
-        </Header>
+        </header>
         <picture>
           <img alt="Random Picsum" src="https://picsum.photos/1000/500/?random" />
         </picture>
-        <Article>
+        <article>
           <Heading>I am the big cool header yeah</Heading>
           <Heading h={2}>I am a smaller header</Heading>
           <section>
@@ -108,7 +104,7 @@ const TestPage = () =>
           <section>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </section>
-        </Article>
+        </article>
         <aside>
           I am a sidebar
         </aside>

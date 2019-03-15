@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 
-
 const StyledContainer = styled.div`
   ${props => props.code.map(snip => snip.code)}
 `;
