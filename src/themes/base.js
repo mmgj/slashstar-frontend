@@ -29,7 +29,7 @@ export const weights = {
   em: 'normal',
   h1: 'bold',
   h2: 'bold',
-  h3: 'normal',
+  h3: 'bold',
   h4: 'normal',
 };
 
@@ -58,14 +58,14 @@ export const media = {
   large: 1200,
   medium: 1024,
   small: 700,
-  xsmall: 420,
+  xsmall: 450,
 };
 
 /* eslint key-spacing: 0 */
 export const fontSizes = {
-  [media.xlarge]:   { body: '1.6rem', h15: '7.4rem', h10: '6.8rem', h1: '6.2rem', h2: '3.6rem', h3: '1.75rem', h4: '1.125rem' },
-  [media.large]:    { body: '1.6rem', h15: '6.6rem', h10: '6.0rem', h1: '5.2rem', h2: '3.6rem', h3: '1.75rem', h4: '1.125rem' },
-  [media.medium]:   { body: '1.6rem', h15: '6.4rem', h10: '5.8rem', h1: '4.6rem', h2: '3.6rem', h3: '1.75rem', h4: '1.125rem' },
-  [media.small]:    { body: '1.6rem', h15: '5.8rem', h10: '5.2rem', h1: '3.6rem', h2: '3.2rem', h3: '1.5rem', h4: '1.1rem' },
-  [media.xsmall]:   { body: '1.6rem', h15: '5.0rem', h10: '4.6rem', h1: '3.6rem', h2: '3.0rem', h3: '1.5rem', h4: '1.1rem' },
+  [media.xlarge]:   { body: '1.6rem', h15: '7.4rem', h10: '6.8rem', h1: '6.2rem', h2: '5.2rem', h3: '4.8rem', h4: '3.2rem' },
+  [media.large]:    { body: '1.6rem', h15: '6.6rem', h10: '6.0rem', h1: '5.2rem', h2: '4.6rem', h3: '4.2rem', h4: '3.4rem' },
+  [media.medium]:   { body: '1.6rem', h15: '6.4rem', h10: '5.8rem', h1: '4.6rem', h2: '4.2rem', h3: '3.6rem', h4: '3.0rem' },
+  [media.small]:    { body: '1.6rem', h15: '5.8rem', h10: '5.2rem', h1: '3.6rem', h2: '3.2rem', h3: '2.8rem', h4: '1.1rem' },
+  [media.xsmall]:   { body: '1.6rem', h15: '5.0rem', h10: '4.6rem', h1: '3.6rem', h2: '3.0rem', h3: '2.4rem', h4: '1.1rem' },
 };

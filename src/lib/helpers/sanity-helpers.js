@@ -39,4 +39,4 @@ export const linkBuilder = (link) => {
     default:
       return '';
   }
-}
+};

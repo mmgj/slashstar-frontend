@@ -14,7 +14,7 @@ const StyledFigure = styled.figure`
   }
 `;
 
-const Figure = (props) => {
+const BlockFigure = (props) => {
   const { asset, alt, caption } = props;
   return (
     <StyledFigure>
@@ -32,15 +32,15 @@ const Figure = (props) => {
   );
 };
 
-Figure.defaultProps = {
+BlockFigure.defaultProps = {
   alt: 'inline-image',
   caption: undefined,
 };
 
-Figure.propTypes = {
+BlockFigure.propTypes = {
   asset: PropTypes.object.isRequired,
   alt: PropTypes.string,
   caption: PropTypes.string,
 };
 
-export default Figure;
+export default BlockFigure;

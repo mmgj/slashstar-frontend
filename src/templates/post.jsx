@@ -1,83 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import styled from '@emotion/styled';
 
 import PageWrapper from '../components/PageWrapper';
 import PageHeader from '../components/PageHeader';
 import PageFooter from '../components/PageFooter';
 import BigImage from '../components/BigImage';
-import BlockContent from '../components/blockcontent/BlockContent';
+import BlockContent from '../components/BlockContent';
 import PageMeta from '../components/PageMeta';
-import Heading from '../components/atoms/Heading';
+import Heading from '../components/Heading';
+import PostGrid from '../components/layout/PostGrid';
 
-const GridContainer = styled.div`
-  display: grid;
-  margin: 0 auto;
+import BespokePost from './bespoke-post';
 
-  grid-template-columns: repeat(16, 1fr);
-  grid-auto-rows: min-content;
-
-  header, footer {
-    grid-column: 1 / -1;
-    min-height: 100px;
-    padding: 20px;
-  }
-  footer {
-    grid-row: - 1;
-  }
-  header {
-    grid-row: 1;
-  }
-  figure {
-    height: 0;
-    padding-bottom: 50%;
-    width: 100%;
-    overflow: hidden;
-    grid-column: 1 / -1;
-    img {
-      width: 100%;
-      height: auto;
-    }
-  }
-  article {
-    z-index: 100;
-    padding: 0 2.5rem 10vh 2.5rem;
-    margin-top: -15vw;
-    background: white;
-    grid-column: 2 / 12;
-  }
-  aside {
-    grid-column: 13 / 16;
-  }
-  @media (min-width: 1200px) {
-    picture {
-    padding-bottom: 30%;
-      img {
-        transform: translateY(-20%);
-      }
-    }
-  }
-  @media (max-width: 1024px) {
-    article {
-      grid-column: 2 / 13;
-    }
-    aside {
-      grid-column: 13 / 17;
-      grid-row: 3;
-    }
-  }
-  @media (max-width: 799px) {
-    article {
-      grid-column: 2 / 16;
-    }
-    aside {
-      min-height: 100px;
-      grid-column: 1 / 17;
-      grid-row: auto;
-    }
-  }
-`;
 
 const BlogPostTemplate = ({ data, errors }) => {
   const {
@@ -89,12 +24,12 @@ const BlogPostTemplate = ({ data, errors }) => {
       {data && (
         <PageWrapper>
           {bespoke
-            ? (<h1>I am speshul</h1>)
+            ? (<BespokePost data={data} />)
             : (
-              <GridContainer>
+              <PostGrid>
                 <PageHeader />
                 {mainImage.asset && (
-                  <BigImage asset={mainImage.asset} />
+                  <BigImage img={mainImage} />
                 )}
                 <article>
                   <Heading h={1}>{title}</Heading>
@@ -102,7 +37,7 @@ const BlogPostTemplate = ({ data, errors }) => {
                 </article>
                 <PageMeta data={data.post} />
                 <PageFooter>Made with Love and Code</PageFooter>
-              </GridContainer>
+              </PostGrid>
             )}
         </PageWrapper>
       )}
@@ -120,12 +55,12 @@ BlogPostTemplate.propTypes = {
   errors: PropTypes.object,
 };
 
-export default BlogPostTemplate;
-
 export const query = graphql`
-  query BlogPostTemplateQuery($id: String!) {
-    post: sanityPost(id: { eq: $id }) {
-      ...postQuery
-    }
+query BlogPostTemplateQuery($id: String!) {
+  post: sanityPost(id: { eq: $id }) {
+    ...postQuery
   }
+}
 `;
+
+export default BlogPostTemplate;

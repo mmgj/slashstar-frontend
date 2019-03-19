@@ -1,16 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BaseBlockContent from '@sanity/block-content-to-react';
-
-import Figure from './Figure';
+import ReactPlayer from 'react-player';
+import styled from '@emotion/styled';
+import BlockFigure from './BlockFigure';
 import CodeBlock from './CodeBlock';
-import Heading from '../atoms/Heading';
+import Heading from '../Heading';
+
+const ResponsiveWrapper = styled.div`
+    position: relative;
+    padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+    .react-player {
+      position: absolute;
+      top: 0;
+      left: 0;
+}
+`;
 
 const serializers = {
   // FIXME: ⬇ Make this work!
   marks: {
+    // eslint-disable-next-line
     internalLink(props) {
-      // eslint-disable-next-line
       return <span>oops</span>;
     },
   },
@@ -21,16 +32,16 @@ const serializers = {
       const { node: { language, style }, children } = props;
       switch (style) {
         case 'h1':
-          return <Heading h={1}>{children}</Heading>;
+          return <Heading inline h={1}>{children}</Heading>;
 
         case 'h2':
-          return <Heading h={2}>{children}</Heading>;
+          return <Heading inline h={2}>{children}</Heading>;
 
         case 'h3':
-          return <Heading h={3}>{children}</Heading>;
+          return <Heading inline h={3}>{children}</Heading>;
 
         case 'h4':
-          return <Heading h={4}>{children}</Heading>;
+          return <Heading inline h={4}>{children}</Heading>;
 
         case 'blockquote':
           return <blockquote className="block-blockquote">{children}</blockquote>;
@@ -54,7 +65,22 @@ const serializers = {
     figure(props) {
       // eslint-disable-next-line
       const { node } = props;
-      return <Figure {...node} />;
+      return <BlockFigure {...node} />;
+    },
+    videoEmbed(props) {
+      // eslint-disable-next-line
+      const { node } = props;
+      return (
+        <ResponsiveWrapper>
+          <ReactPlayer
+            className="react-player"
+            height="100%"
+            width="100%"
+            url={`https://youtu.be/${node.id}`}
+
+          />
+        </ResponsiveWrapper>
+      );
     },
   },
 };

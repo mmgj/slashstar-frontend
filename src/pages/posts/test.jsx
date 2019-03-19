@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PageWrapper from '../../components/PageWrapper';
-import Heading from '../../components/atoms/Heading';
+import Heading from '../../components/Heading';
 import Brand from '../../components/Brand';
 
 const Grid = styled.div`

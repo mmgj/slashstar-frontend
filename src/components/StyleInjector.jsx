@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 
 const StyledContainer = styled.div`
-  ${props => props.code.map(snip => snip.code)}
+  ${props => props.code}
 `;
 
 const StyleInjector = ({ code, children }) => {

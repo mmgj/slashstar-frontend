@@ -10,23 +10,22 @@ const Figure = styled.figure`
   padding-bottom: calc(9 / 24 * 100%);
   margin: 0;
   border: 1px solid ${props => props.theme.colors.black};
-  border-left: none;
-  border-right: none;
+  border-width: 1px 0 1px 0;
   overflow: hidden;
-
-  picture {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-  }
 `;
 
-const BigImage = ({ asset }) => <Figure><Img imgStyle={{ transitionDelay: '0s' }} fluid={asset.fluid} /></Figure>;
+const BigImage = ({ img }) => {
+  const { asset } = img;
+  return (
+    <Figure>
+      <Img imgStyle={{ transitionDelay: '0s' }} fluid={asset.fluid} />
+    </Figure>
+  );
+};
 
 
 BigImage.propTypes = {
-  asset: PropTypes.object.isRequired,
+  img: PropTypes.object.isRequired,
 };
 
 export default BigImage;

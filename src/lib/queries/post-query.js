@@ -4,6 +4,9 @@ export const postQuery = graphql`
   fragment postQuery on SanityPost {
       id
       bespoke
+      styles {
+        code
+      }
       publishedAt
       categories {
         title

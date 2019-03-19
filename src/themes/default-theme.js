@@ -1,4 +1,4 @@
-import { sizes, colors, weights, media, fontSizes } from './base-theme';
+import { sizes, colors, weights, media, fontSizes } from './base';
 
 const primaryFont = 'Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif';
 const secondaryFont = '"Montserrat Alternates", sans-serif';

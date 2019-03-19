@@ -1,6 +1,6 @@
-import { sizes, colors, weights, media } from './base-theme';
+import { sizes, colors, weights, media } from './base';
 
-const imp = `
+const setup = `
   @import url('https://fonts.googleapis.com/css?family=Chewy|Luckiest+Guy');
 `;
 
@@ -10,7 +10,7 @@ const tertiaryFont = '"Source Sans Pro", "Arial", sans-serif';
 
 export default {
   name: 'Yikes!',
-  imp,
+  setup,
   fonts: {
     body: primaryFont,
     headings: secondaryFont,

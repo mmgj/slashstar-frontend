@@ -9,6 +9,10 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 9;
+  background: white;
+  border-bottom: 1px solid black;
+  padding: 1rem;
   .nav-container {
     padding: 0 2rem;
     display: flex;
@@ -31,15 +35,12 @@ const StyledHeader = styled.header`
   }
   @media (max-width: ${props => props.theme.media.small}px) {
     flex-direction: row-reverse;
-    h1 {
-      margin-left: 2rem;
-    }
     .nav-container {
       display: block;
       padding: 0;
+      margin-right: .8rem;
       .nav-toggle {
         display: block;
-        margin-right: 2rem;
         display: inline-block;
         border: none;
         margin: 0;
@@ -72,7 +73,7 @@ const StyledHeader = styled.header`
             padding: 0;
             a {
               display: block;
-              padding: 1.5rem 2rem;
+              padding: 1.6rem 2rem;
               margin: 0;
               border-bottom: 1px solid black;
             }
@@ -99,7 +100,6 @@ const PageHeader = () => {
     query HeaderQuery {
       site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
         title
-
       }
     }
   `);
@@ -117,7 +117,7 @@ const PageHeader = () => {
           </ul>
         </nav>
       </div>
-      <Brand h={2} colored>
+      <Brand h={1} colored>
         {data.site.title}
       </Brand>
     </StyledHeader>
