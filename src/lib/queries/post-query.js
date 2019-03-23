@@ -41,30 +41,5 @@ export const postQuery = graphql`
         current
       }
       _rawBody
-      authors {
-        _key
-        person {
-          image {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-          }
-          name
-        }
-        roles
-      }
+      _rawAuthors(resolveReferences: {maxDepth: 5})
   }`;

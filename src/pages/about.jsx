@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import styled from '@emotion/styled';
+
 import PageGrid from '../components/layout/PageGrid';
 import PageHeader from '../components/PageHeader';
 import PageFooter from '../components/PageFooter';
@@ -8,15 +8,8 @@ import Heading from '../components/Heading';
 import PageWrapper from '../components/PageWrapper';
 import BigImage from '../components/BigImage';
 import BlockContent from '../components/BlockContent';
+import Article from '../components/Article';
 
-const StyledArticle = styled.article`
-  margin-top: -20vw;
-  z-index: 1;
-  pre {
-    margin: 5rem 0;
-    font-size: 1.6rem;
-  }
-`;
 
 const AboutPage = () => {
   const data = useStaticQuery(graphql`
@@ -54,7 +47,7 @@ const AboutPage = () => {
         {mainImage.asset && (
           <BigImage img={mainImage} />
         )}
-        <StyledArticle>
+        <Article>
           <div className="shadow-boxer">
             <Heading
               h={1}
@@ -76,7 +69,7 @@ const AboutPage = () => {
             </Heading>
             <BlockContent blocks={body} />
           </div>
-        </StyledArticle>
+        </Article>
         <PageFooter />
       </PageGrid>
     </PageWrapper>

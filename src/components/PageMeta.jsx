@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import { format, distanceInWords, differenceInDays } from 'date-fns'; // eslint-disable-line
+import { format, distanceInWords, differenceInDays } from 'date-fns';
 import RoleList from './RoleList';
 
 const StyledMeta = styled.aside`
-  /* border: 1px solid ${props => props.theme.colors.fg}; */
   background: ${props => props.theme.colors.bg};
   padding: 1.6rem;
   padding-top: 7rem;
@@ -18,7 +17,9 @@ const StyledMeta = styled.aside`
 `;
 
 const PageMeta = ({ data }) => {
-  const { publishedAt, categories, authors } = data;
+  const {
+    post: { publishedAt, categories, _rawAuthors: authors },
+  } = data;
   return (
     <StyledMeta>
       {publishedAt && (

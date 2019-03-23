@@ -17,7 +17,6 @@ const Figure = styled.figure`
 `;
 
 const BigImage = ({ img }) => {
-  console.log('img: ', img);
   const { asset } = img;
   return (
     <Figure centered={img.centered}>

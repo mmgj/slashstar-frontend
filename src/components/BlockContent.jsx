@@ -38,12 +38,16 @@ const serializers = {
     internalLink(props) {
       return <span>oops</span>;
     },
+    abbr(props) {
+      console.log('props: ', props);
+      return <abbr title={props.mark.title}>{props.children}</abbr>;
+    }
   },
   types: {
     block(props) {
       // Can't be bothered to do PropTypes for every case.
       // eslint-disable-next-line
-      const { node: { language, style }, children } = props;
+      const { node: { language, style, expanded }, children } = props;
       switch (style) {
         case 'h1':
           return <Heading inline h={1}>{children}</Heading>;
