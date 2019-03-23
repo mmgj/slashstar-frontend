@@ -27,8 +27,8 @@ async function createBlogPostPages(graphql, actions, reporter) {
 
   const postEdges = (result.data.allSanityPost || {}).edges || [];
 
-  postEdges.forEach((edge, index) => {
-    const { id, slug = {}, publishedAt } = edge.node;
+  postEdges.forEach((edge) => {
+    const { id, slug = {} } = edge.node;
     // const dateSegment = format(publishedAt, 'YYYY/MM');
     const path = `/posts/${slug.current}/`;
 
