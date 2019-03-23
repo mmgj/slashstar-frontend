@@ -1,5 +1,5 @@
 {
-  "main": "CodeBlock.jsx",
+  "main": "./CodeBlock.jsx",
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
