@@ -6,13 +6,13 @@
 
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
+import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'emotion-theming';
 import { Global, css } from '@emotion/core';
 import PropTypes from 'prop-types';
 // ⬇⬇ It seems including an actual css file is necessary for putting styles on the root <html> element.
 import '../styles/main.css';
 import theme from '../themes/default-theme';
-
 
 const setupQuery = graphql`
   query MetaQuery {
@@ -37,19 +37,26 @@ const globalStyle = css`
 `;
 
 const PageWrapper = ({ children }) => (
-  // Add react-helmet here
   <StaticQuery
     query={setupQuery}
-    render={({ site }) => { // eslint-disable-line
-      return (
+    render={() =>
+      (
         <ThemeProvider theme={theme}>
           <>
+            <Helmet
+              title="Slash Star Dot Dev"
+              meta={[
+                { name: 'description', content: 'Rubber Duck Debugging Manifest' },
+                { name: 'keywords', content: 'gatsby, sanity, react, javascript, jamstack, web dev, yolo' },
+              ]}
+              htmlAttributes={{ lang: 'en' }}
+            />
             <Global styles={globalStyle} />
             {children}
           </>
         </ThemeProvider>
-      );
-    }}
+      )
+    }
   />
 );
 

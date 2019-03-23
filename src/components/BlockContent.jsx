@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
 import BaseBlockContent from '@sanity/block-content-to-react';
@@ -34,20 +35,15 @@ const StyledSection = styled.section`
 const serializers = {
   // FIXME: ⬇ Make this work!
   marks: {
-    // eslint-disable-next-line
-    internalLink(props) {
+    internalLink() {
       return <span>oops</span>;
     },
-    abbr(props) {
-      console.log('props: ', props);
-      return <abbr title={props.mark.title}>{props.children}</abbr>;
-    }
+    abbr({ mark, children }) {
+      return <abbr title={mark.title}>{children}</abbr>;
+    },
   },
   types: {
-    block(props) {
-      // Can't be bothered to do PropTypes for every case.
-      // eslint-disable-next-line
-      const { node: { language, style, expanded }, children } = props;
+    block({ node: { language, style }, children }) {
       switch (style) {
         case 'h1':
           return <Heading inline h={1}>{children}</Heading>;
@@ -61,6 +57,9 @@ const serializers = {
         case 'h4':
           return <Heading inline h={4} style={{ fontStyle: 'italic' }}>{children}</Heading>;
 
+        case 'small':
+          return <small>{children}</small>;
+
         case 'blockquote':
           return <blockquote className="block-blockquote">{children}</blockquote>;
 
@@ -71,23 +70,17 @@ const serializers = {
           return <StyledSection>{children}</StyledSection>;
       }
     },
-    code(props) {
-      // eslint-disable-next-line
-      const { node: { code, language } } = props;
+    code({ node: { code, language } }) {
       return (
         <BlockCode language={language}>
           {code}
         </BlockCode>
       );
     },
-    figure(props) {
-      // eslint-disable-next-line
-      const { node } = props;
+    figure({ node }) {
       return <BlockFigure {...node} />;
     },
-    videoEmbed(props) {
-      // eslint-disable-next-line
-      const { node } = props;
+    videoEmbed({ node }) {
       return (
         <ResponsiveWrapper>
           <ReactPlayer

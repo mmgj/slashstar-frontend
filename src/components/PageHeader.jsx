@@ -123,7 +123,6 @@ const PageHeader = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             {/* <li><Link to="/posts">Posts</Link></li> */}
-            <li className="nope">Posts</li>
           </ul>
         </nav>
       </div>
@@ -133,7 +132,5 @@ const PageHeader = () => {
     </StyledHeader>
   );
 };
-
-PageHeader.propTypes = {};
 
 export default PageHeader;

@@ -34,13 +34,12 @@ const StyledArticle = styled.article`
   }
 `;
 
-const Article = ({ children }) => {
-  return (
+const Article = ({ children }) =>
+  (
     <StyledArticle>
       {children}
     </StyledArticle>
   );
-};
 
 Article.propTypes = {
   children: PropTypes.node.isRequired,

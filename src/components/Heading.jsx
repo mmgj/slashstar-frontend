@@ -6,7 +6,13 @@ const StyledHeading = styled.span`
     font-family: ${props => props.theme.fonts.headings};
     font-weight: ${props => props.theme.weights[`h${props.h}`]};
     font-size: ${props => props.theme.sizes[`h${props.h}`]};
-    ${props => Object.keys(props.theme.media).map(key => (`@media(max-width: ${props.theme.media[key]}px) { font-size: ${props.theme.fontSizes[props.theme.media[key]][`h${props.h}`]}; }`)).join('\n')}
+
+    ${props => Object.keys(props.theme.media).map(key =>
+    (`@media(max-width: ${props.theme.media[key]}px) {
+        font-size: ${props.theme.fontSizes[props.theme.media[key]][`h${props.h}`]
+      };
+    }`)).join('\n')}
+
     ${(props) => {
     if (props.h >= 5) {
       return `font-family:${props.theme.fonts.body};`;
