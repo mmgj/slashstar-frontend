@@ -66,6 +66,6 @@ export const fontSizes = {
   [media.xlarge]:   { body: '1.6rem', h15: '7.4rem', h10: '6.8rem', h1: '6.2rem', h2: '5.2rem', h3: '4.8rem', h4: '3.2rem' },
   [media.large]:    { body: '1.6rem', h15: '6.6rem', h10: '6.0rem', h1: '5.4rem', h2: '4.6rem', h3: '4.2rem', h4: '3.4rem' },
   [media.medium]:   { body: '1.6rem', h15: '6.4rem', h10: '5.8rem', h1: '4.6rem', h2: '4.2rem', h3: '3.6rem', h4: '3.0rem' },
-  [media.small]:    { body: '1.6rem', h15: '5.8rem', h10: '5.2rem', h1: '3.6rem', h2: '3.2rem', h3: '2.8rem', h4: '1.1rem' },
-  [media.xsmall]:   { body: '1.6rem', h15: '5.0rem', h10: '4.6rem', h1: '3.6rem', h2: '3.0rem', h3: '2.4rem', h4: '1.1rem' },
+  [media.small]:    { body: '1.6rem', h15: '5.8rem', h10: '5.2rem', h1: '3.6rem', h2: '3.2rem', h3: '2.8rem', h4: '2.0rem' },
+  [media.xsmall]:   { body: '1.6rem', h15: '5.0rem', h10: '4.6rem', h1: '3.6rem', h2: '3.0rem', h3: '2.4rem', h4: '1.5rem' },
 };

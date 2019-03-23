@@ -1,3 +1,9 @@
+/**
+ * Experimental component for injecting styles
+ * into emotion from Sanity.
+ * Very much not recommended.
+ * https://slashstar.dev/posts/a-tribute-to-geocities
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';

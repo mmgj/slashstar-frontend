@@ -24,10 +24,9 @@ const StyledFigure = styled.figure`
 `;
 
 const BlockFigure = (props) => {
-  console.log('props: ', props);
   const { asset, alt, caption, aligned } = props;
   return (
-    <StyledFigure align={aligned}>
+    <StyledFigure align={aligned} {...props}>
       {asset && (
         <img
           src={imageUrlFor(buildImageObj(props)).fit('max')}

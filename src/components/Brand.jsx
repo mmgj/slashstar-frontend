@@ -15,6 +15,7 @@ const StyledBrand = styled(Heading)`
     a, a:visited {
       color: ${props => props.theme.colors.black};
       text-decoration: none;
+      border-bottom: 0;
       .brandbit {
         &.one {
           color: ${props => props.theme.colors.black};

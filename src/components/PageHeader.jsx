@@ -30,6 +30,7 @@ const StyledHeader = styled.header`
           color: ${props => props.theme.colors.black};
           text-decoration: none;
           margin: 0 1rem;
+          border: 0;
         }
         :hover {
           text-decoration: underline;

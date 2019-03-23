@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import BaseBlockContent from '@sanity/block-content-to-react';
 import ReactPlayer from 'react-player';
 import styled from '@emotion/styled';
+import { darken } from 'polished';
 import BlockFigure from './BlockFigure';
-import CodeBlock from './CodeBlock';
+import BlockCode from './BlockCode';
 import Heading from './Heading';
 
 const ResponsiveWrapper = styled.div`
@@ -23,6 +24,11 @@ const ResponsiveWrapper = styled.div`
 const StyledSection = styled.section`
   margin: 1rem 0;
   font-family: ${props => props.theme.fonts.body};
+  a, a:visited {
+        color: ${props => darken(0.4, props.theme.colors.secondary)};
+        text-decoration: none;
+        border-bottom: 2px solid ${props => props.theme.colors.secondary};
+      }
 `;
 
 const serializers = {
@@ -65,9 +71,9 @@ const serializers = {
       // eslint-disable-next-line
       const { node: { code, language } } = props;
       return (
-        <CodeBlock language={language}>
+        <BlockCode language={language}>
           {code}
-        </CodeBlock>
+        </BlockCode>
       );
     },
     figure(props) {

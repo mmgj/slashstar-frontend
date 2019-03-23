@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Prism from './aux/prism';
-import './aux/prism-monokai.css';
+import Prism from '../lib/aux/prism';
+import '../lib/aux/prism-monokai.css';
 
-const CodeBlock = ({ language, children }) => {
+const BlockCode = ({ language, children }) => {
   useEffect(() => {
     Prism.highlightAll();
   });
@@ -14,13 +14,13 @@ const CodeBlock = ({ language, children }) => {
   );
 };
 
-CodeBlock.defaultProps = {
+BlockCode.defaultProps = {
   language: 'javascript',
 };
 
-CodeBlock.propTypes = {
+BlockCode.propTypes = {
   children: PropTypes.node.isRequired,
   language: PropTypes.string,
 };
 
-export default CodeBlock;
+export default BlockCode;

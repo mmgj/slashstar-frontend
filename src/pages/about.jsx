@@ -10,7 +10,7 @@ import BigImage from '../components/BigImage';
 import BlockContent from '../components/BlockContent';
 
 const StyledArticle = styled.article`
-  margin-top: -15vw;
+  margin-top: -20vw;
   z-index: 1;
   pre {
     margin: 5rem 0;
