@@ -28,7 +28,7 @@ const StyledContainer = styled.div`
   }
   @media (max-width: 1024px) {
     article {
-      grid-column: 5 / 15;
+      grid-column: 3 / 15;
     }
     aside {
       grid-column: 13 / 17;
