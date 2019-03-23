@@ -52,7 +52,7 @@ const StyledContainer = styled.div`
   @media (max-width: 540px) {
     article {
       padding: 0 1.8rem;
-      grid-column: 2 / 16;
+      grid-column: 1 / 17;
     }
   }
 `;
