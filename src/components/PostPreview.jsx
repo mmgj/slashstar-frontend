@@ -8,7 +8,7 @@ import ZoomBox from './ZoomBox';
 
 const Text = styled.div`
   flex-basis: 2;
-  max-width: 400px;
+  max-width: 450px;
   text-align: right;
   margin: 0 3rem;
   h1 {
@@ -26,15 +26,23 @@ const Text = styled.div`
 const Preview = styled(Link)`
   display: flex;
   align-items: flex-start;
-  color: ${props => props.theme.colors.darkgray};
+  justify-content: flex-end;
+  width: 100%;
+  color: ${props => props.theme.colors.black};
   text-decoration: none;
-  margin: 3rem 0;
+  margin: 1rem 0;
+  padding: 1rem;
   :focus, :hover {
     background: #fafafa;
     h1 {
       text-decoration: underline;
     }
   }
+  .zoombox-outer {
+    margin-top: .6rem;
+    /* height: 100%; */
+  }
+
   @media(max-width: ${props => props.theme.media.medium}px) {
     flex-direction: column;
     align-items: flex-end;
@@ -57,8 +65,14 @@ const Preview = styled(Link)`
     }
   }
   @media(max-width: ${props => props.theme.media.xsmall}px) {
+    margin: 0 1rem 0 2rem;
+    ${Text} {
+      padding-left: 1rem;
+      max-width: calc(100vw);
+    }
     .zoombox-outer {
       height: 300px;
+      max-width: calc(100vw - 3rem);
     }
   }
 `;
@@ -70,7 +84,7 @@ const PostPreview = ({ item }) => {
   return (
     <Preview to={`/posts/${slug.current}`}>
       <Text>
-        <h1>{title.toLowerCase().replace(/[^a-zA-Z ]/g, '').split(' ').join('·')}</h1>
+        <h1>{title.toLowerCase()}</h1>
         <BlockContent blocks={excerpt} />
       </Text>
       <ZoomBox

@@ -4,3 +4,24 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
 }
+
+.shadow-boxer {
+  background: white;
+  display: block;
+  position: relative;
+  padding: .1px 5rem 10vh 5rem;
+  min-height: 500px;
+}
+.shadow-boxer::after {
+    border-radius: 0 0 70% 70%;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.25);
+    content: '';
+    display: block;
+    height: 550px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+

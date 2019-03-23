@@ -9,21 +9,28 @@ const StyledFigure = styled.figure`
   margin: 2rem 0;
   padding: 0;
   img {
-    width: 100%;
-    height: auto;
+    ${(props) => {
+    switch (props.align) {
+      case 'left':
+        return 'width: 50%; float: left; margin-right: 2.5rem;';
+      case 'right':
+        return 'width: 50%; float: right; margin-left: 2.5rem;';
+      case 'center':
+      default:
+        return 'width: 100%;';
+    }
+  }}
   }
 `;
 
 const BlockFigure = (props) => {
-  const { asset, alt, caption } = props;
+  console.log('props: ', props);
+  const { asset, alt, caption, aligned } = props;
   return (
-    <StyledFigure>
+    <StyledFigure align={aligned}>
       {asset && (
         <img
-          src={imageUrlFor(buildImageObj(props))
-            .width(1200)
-            .fit('max')
-            .url()}
+          src={imageUrlFor(buildImageObj(props)).fit('max')}
           alt={alt}
         />
       )}
@@ -35,12 +42,14 @@ const BlockFigure = (props) => {
 BlockFigure.defaultProps = {
   alt: 'inline-image',
   caption: undefined,
+  aligned: 'center',
 };
 
 BlockFigure.propTypes = {
   asset: PropTypes.object.isRequired,
   alt: PropTypes.string,
   caption: PropTypes.string,
+  aligned: PropTypes.oneOf(['left', 'right', 'center']),
 };
 
 export default BlockFigure;

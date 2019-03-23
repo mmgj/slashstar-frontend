@@ -19,20 +19,16 @@ const StyledContainer = styled.div`
   }
   figure {
     grid-column: 1 / -1;
-    img {
-      width: 100%;
-      height: auto;
-    }
   }
   article {
-    grid-column: 2 / 12;
+    grid-column: 3 / 15;
   }
   aside {
     grid-column: 13 / 16;
   }
   @media (max-width: 1024px) {
     article {
-      grid-column: 2 / 13;
+      grid-column: 5 / 15;
     }
     aside {
       grid-column: 13 / 17;
@@ -57,15 +53,15 @@ const StyledContainer = styled.div`
   }
 `;
 
-const PostGrid = ({ children }) =>
+const PageGrid = ({ children }) =>
   (
     <StyledContainer>
       {children}
     </StyledContainer>
   );
 
-PostGrid.propTypes = {
+PageGrid.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default PostGrid;
+export default PageGrid;

@@ -23,14 +23,22 @@ const StyledHeader = styled.header`
       display: flex;
       list-style-type: none;
       padding-left: 0;
-      a {
-        color: ${props => props.theme.colors.black};
-        text-decoration: none;
+      li {
         margin: 0 1rem;
+        display: inline-block;
+        a {
+          color: ${props => props.theme.colors.black};
+          text-decoration: none;
+          margin: 0 1rem;
+        }
         :hover {
           text-decoration: underline;
-          }
         }
+        &.nope {
+          color: #ccc;
+          text-decoration: line-through;
+        }
+      }
     }
   }
   @media (max-width: ${props => props.theme.media.small}px) {
@@ -112,13 +120,14 @@ const PageHeader = () => {
         <nav className={`nav${showNav ? ' nav-visible' : ''}`}>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/posts">Posts</Link></li>
-            <li><Link to="/code">Code</Link></li>
+            <li><Link to="/about">About</Link></li>
+            {/* <li><Link to="/posts">Posts</Link></li> */}
+            <li className="nope">Posts</li>
           </ul>
         </nav>
       </div>
       <Brand h={1} colored>
-        {data.site.title}
+        {data.site.title.toLowerCase()}
       </Brand>
     </StyledHeader>
   );

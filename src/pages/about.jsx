@@ -1,19 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled from '@emotion/styled';
-
-
-import PageWrapper from '../components/PageWrapper';
+import PropTypes from 'prop-types';
+import PageGrid from '../components/layout/PageGrid';
 import PageHeader from '../components/PageHeader';
 import PageFooter from '../components/PageFooter';
-import BigImage from '../components/BigImage';
-import BlockContent from '../components/BlockContent';
-import PageMeta from '../components/PageMeta';
 import Heading from '../components/Heading';
-import PostGrid from '../components/layout/PostGrid';
-
-import BespokePost from './bespoke-post';
+import PageWrapper from '../components/PageWrapper';
+import BigImage from '../components/BigImage';
+import BlockContent from '../components/BlockContent/BlockContent';
 
 const StyledArticle = styled.article`
   margin-top: -15vw;
@@ -24,21 +19,40 @@ const StyledArticle = styled.article`
   }
 `;
 
-const BlogPostTemplate = ({ data, errors }) => {
+const AboutPage = () => {
+  const data = useStaticQuery(graphql`
+  query AboutPageQuery {
+    page: sanityPage(_id: { regex: "/(drafts.|)about/" }) {
+      id
+      title
+      _rawBody
+      mainImage {
+        alt
+        asset {
+          id
+          fluid {
+            base64
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
+          }
+        }
+      }
+    }
+  }
+  `);
+  console.log('data: ', data);
   const {
-    post: { mainImage, title, _rawBody: body, bespoke },
+    page: { mainImage, title, _rawBody: body },
   } = data;
   return (
-    <>
-      {errors && <h1>Errored!</h1>}
-      {data && (
-        <PageWrapper>
-          {bespoke
-            ? (<BespokePost data={data} />)
-            : (
-              <PostGrid>
-                <PageHeader />
-                {mainImage.asset && (
+    <PageWrapper>
+      <PageGrid>
+        <PageHeader />
+        {mainImage.asset && (
                   <BigImage img={mainImage} />
                 )}
                 <StyledArticle>
@@ -62,34 +76,15 @@ const BlogPostTemplate = ({ data, errors }) => {
                       {title}
                     </Heading>
                     <BlockContent blocks={body} />
-                  </div>
-                </StyledArticle>
-                <PageMeta data={data.post} />
-                <PageFooter>Made with Love and Code</PageFooter>
-              </PostGrid>
-            )}
-        </PageWrapper>
-      )}
-    </>
+                    </div>
+        </StyledArticle>
+        <PageFooter />
+      </PageGrid>
+    </PageWrapper>
   );
 };
 
-BlogPostTemplate.defaultProps = {
-  data: undefined,
-  errors: undefined,
+AboutPage.propTypes = {
 };
 
-BlogPostTemplate.propTypes = {
-  data: PropTypes.object,
-  errors: PropTypes.object,
-};
-
-export const query = graphql`
-query BlogPostTemplateQuery($id: String!) {
-  post: sanityPost(id: { eq: $id }) {
-    ...postQuery
-  }
-}
-`;
-
-export default BlogPostTemplate;
+export default AboutPage;

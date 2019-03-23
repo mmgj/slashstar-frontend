@@ -5,20 +5,27 @@ import PropTypes from 'prop-types';
 
 const Figure = styled.figure`
   position: relative;
-  height: 0px;
+  height: 50vw;
   width: 100%;
-  padding-bottom: calc(9 / 24 * 100%);
   margin: 0;
   border: 1px solid ${props => props.theme.colors.black};
   border-width: 1px 0 1px 0;
   overflow: hidden;
+  .gatsby-image-wrapper {
+    ${props => (props.centered ? 'top: 50%; transform: translateY(-50%);' : '')}
+  }
 `;
 
 const BigImage = ({ img }) => {
+  console.log('img: ', img);
   const { asset } = img;
   return (
-    <Figure>
-      <Img imgStyle={{ transitionDelay: '0s' }} fluid={asset.fluid} />
+    <Figure centered={img.centered}>
+      <Img
+        fluid={asset.fluid}
+        style={{ }}
+        imgStyle={{ }}
+      />
     </Figure>
   );
 };

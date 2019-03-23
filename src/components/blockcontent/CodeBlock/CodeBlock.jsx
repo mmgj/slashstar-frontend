@@ -8,7 +8,7 @@ const CodeBlock = ({ language, children }) => {
     Prism.highlightAll();
   });
   return (
-    <pre className={`language-${language}`}>
+    <pre className={`line-numbers language-${language}`}>
       <code className={`language-${language}`}>{children}</code>
     </pre>
   );

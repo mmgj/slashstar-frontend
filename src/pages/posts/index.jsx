@@ -1,12 +1,12 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
-import PageWrapper from '../components/PageWrapper';
-import PageHeader from '../components/PageHeader';
-import PostPreview from '../components/PostPreview';
-import PageFooter from '../components/PageFooter';
-import Heading from '../components/Heading';
-import IndexGrid from '../components/layout/IndexGrid';
+import PageWrapper from '../../components/PageWrapper';
+import PageHeader from '../../components/PageHeader';
+import PostPreview from '../../components/PostPreview';
+import PageFooter from '../../components/PageFooter';
+import Heading from '../../components/Heading';
+import IndexGrid from '../../components/layout/IndexGrid';
 
 
 const Posts = styled.div`
@@ -25,9 +25,9 @@ const Posts = styled.div`
 
 export default () => {
   const data = useStaticQuery(graphql`
-    query PostsQuery {
+    query AllPostsQuery {
       posts: allSanityPost(
-        limit: 10
+        limit: 1000
         sort: { fields: [publishedAt], order: DESC }
       ) {
         edges {
@@ -44,7 +44,7 @@ export default () => {
       <IndexGrid>
         <PageHeader />
         <Posts>
-          <Heading h={2} style={{ color: 'lightgray', marginRight: 10 }}>recently</Heading>
+          <Heading h={2} style={{ color: 'lightgray', marginRight: 10 }}>posts</Heading>
           {edges.map(item => <PostPreview key={item.node.id} item={item} />)}
         </Posts>
         <PageFooter>

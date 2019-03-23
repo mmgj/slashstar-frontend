@@ -4,9 +4,6 @@ export const postQuery = graphql`
   fragment postQuery on SanityPost {
       id
       bespoke
-      styles {
-        code
-      }
       publishedAt
       categories {
         title
@@ -37,6 +34,7 @@ export const postQuery = graphql`
           }
         }
         alt
+        centered
       }
       title
       slug {

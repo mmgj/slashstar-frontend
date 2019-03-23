@@ -8,20 +8,18 @@ import Heading from './Heading';
 const StyledBrand = styled(Heading)`
     display: inline-block;
     padding-right: 3rem;
+    :hover, :focus {
+        transition: all .1s ease-in;
+        transform: scale(1.05);
+      }
     a, a:visited {
       color: ${props => props.theme.colors.black};
       text-decoration: none;
-      :hover, :focus {
-        text-decoration: underline;
-      }
       .brandbit {
         &.one {
           color: ${props => props.theme.colors.black};
         }
         &.two {
-          color: ${props => props.theme.colors.secondary};
-        }
-        &.three {
           color: ${props => props.theme.colors.primary};
         }
       }
@@ -30,12 +28,11 @@ const StyledBrand = styled(Heading)`
 
 const splitChildren = (children) => {
   const split = children.split(' ');
-  if (split.length !== 3) return children;
+  if (split.length !== 2) return children;
   const colored = (
     <>
       <span className="brandbit one">{split[0]}</span>
       <span className="brandbit two">{split[1]}</span>
-      <span className="brandbit three">{split[2]}</span>
     </>
   );
   return colored;

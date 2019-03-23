@@ -7,19 +7,17 @@ const StyledContainer = styled.div`
   ${props => props.code}
 `;
 
-const StyleInjector = ({ code, children }) => {
-  console.log('code: ', code);
-  return (
+const StyleInjector = ({ code, children }) =>
+  (
     <StyledContainer code={code}>
       <div className="root">
         {children}
       </div>
     </StyledContainer>
   );
-};
 
 StyleInjector.propTypes = {
-  code: PropTypes.array.isRequired,
+  code: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 

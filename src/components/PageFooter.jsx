@@ -12,9 +12,7 @@ const StyledFooter = styled.footer`
   align-items: center;
   font-size: 1.2rem;
   margin: 0;
-  position: relative;
   left: 0;
-  bottom: 20px;
 `;
 
 const PageFooter = ({ children }) =>
@@ -24,8 +22,12 @@ const PageFooter = ({ children }) =>
     </StyledFooter>
   );
 
+PageFooter.defaultProps = {
+  children: <span>Made with Love & Code</span>,
+};
+
 PageFooter.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default PageFooter;
