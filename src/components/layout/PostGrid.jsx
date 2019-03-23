@@ -51,7 +51,7 @@ const StyledContainer = styled.div`
   }
   @media (max-width: 540px) {
     article {
-      padding: 0 1.8rem;
+      padding: 0 .8rem;
       grid-column: 1 / 17;
     }
   }
