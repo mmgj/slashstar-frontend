@@ -1,0 +1,9 @@
+{
+  "main": "CodeBlock.jsx",
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "prop-types": "^15.6.2",
+    "@emotion/styled": "^10.0.7"
+  }
+}
