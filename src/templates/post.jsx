@@ -8,7 +8,7 @@ import PageWrapper from '../components/PageWrapper';
 import PageHeader from '../components/PageHeader';
 import PageFooter from '../components/PageFooter';
 import BigImage from '../components/BigImage';
-import BlockContent from '../components/BlockContent/index';
+import BlockContent from '../components/BlockContent';
 import PageMeta from '../components/PageMeta';
 import Heading from '../components/Heading';
 import PostGrid from '../components/layout/PostGrid';

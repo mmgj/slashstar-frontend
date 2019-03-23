@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Prism from './prism.js';
-import './prism-monokai.css';
+import Prism from './aux/prism';
+import './aux/prism-monokai.css';
 
 const CodeBlock = ({ language, children }) => {
   useEffect(() => {

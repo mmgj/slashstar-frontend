@@ -5,7 +5,7 @@ import ReactPlayer from 'react-player';
 import styled from '@emotion/styled';
 import BlockFigure from './BlockFigure';
 import CodeBlock from './CodeBlock';
-import Heading from '../Heading';
+import Heading from './Heading';
 
 const ResponsiveWrapper = styled.div`
     background: ${props => props.theme.colors.black};

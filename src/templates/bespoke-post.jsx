@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import PageWrapper from '../components/PageWrapper';
-import BlockContent from '../components/BlockContent/index';
+import BlockContent from '../components/BlockContent';
 import { imageUrlFor, buildImageObj } from '../lib/helpers/sanity-helpers';
 import StyleInjector from '../components/StyleInjector';
 

@@ -7,7 +7,7 @@ import PageFooter from '../components/PageFooter';
 import Heading from '../components/Heading';
 import PageWrapper from '../components/PageWrapper';
 import BigImage from '../components/BigImage';
-import BlockContent from '../components/BlockContent/BlockContent';
+import BlockContent from '../components/BlockContent';
 
 const StyledArticle = styled.article`
   margin-top: -15vw;
