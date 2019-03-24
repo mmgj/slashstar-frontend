@@ -42,4 +42,5 @@ export const postQuery = graphql`
       }
       _rawBody(resolveReferences: {maxDepth: 5})
       _rawAuthors(resolveReferences: {maxDepth: 5})
+      _rawExcerpt
   }`;

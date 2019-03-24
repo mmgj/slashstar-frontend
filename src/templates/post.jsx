@@ -14,17 +14,18 @@ import Article from '../components/Article';
 import PostGrid from '../components/layout/PostGrid';
 
 import BespokePost from './bespoke-post';
+import { imageUrlFor } from '../lib/helpers/sanity-helpers';
 
 
 const BlogPostTemplate = ({ data, errors }) => {
   const {
-    post: { mainImage, title, _rawBody: body, bespoke },
+    post: { mainImage, title, _rawBody: body, bespoke, _rawExcerpt: excerpt },
   } = data;
   return (
     <>
       {errors && <h1>Errored!</h1>}
       {data && (
-        <PageWrapper>
+        <PageWrapper pageData={{ title, imageUrl: imageUrlFor(mainImage).url(), excerpt }}>
           {bespoke
             ? (<BespokePost data={data} />)
             : (

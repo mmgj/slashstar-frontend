@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 // ⬇⬇ It seems including an actual css file is necessary for putting styles on the root <html> element.
 import '../styles/main.css';
 import theme from '../themes/default-theme';
+import { toPlainText } from '../lib/helpers/sanity-helpers';
 
 const setupQuery = graphql`
   query MetaQuery {
@@ -36,27 +37,34 @@ const globalStyle = css`
   }
 `;
 
-const PageWrapper = ({ children }) => (
+const PageWrapper = ({ children, pageData }) => (
   <StaticQuery
     query={setupQuery}
-    render={() =>
-      (
-        <ThemeProvider theme={theme}>
-          <>
-            <Helmet
-              title="Slash Star Dot Dev"
-              meta={[
-                { name: 'description', content: 'Rubber Duck Debugging Manifest' },
-                { name: 'keywords', content: 'gatsby, sanity, react, javascript, jamstack, web dev, yolo' },
-              ]}
-              htmlAttributes={{ lang: 'en' }}
-            />
-            <Global styles={globalStyle} />
-            {children}
-          </>
-        </ThemeProvider>
-      )
-    }
+    render={() => (
+      <ThemeProvider theme={theme}>
+        <>
+          <Helmet
+            title="Slash Star Dot Dev"
+            meta={[
+              { name: 'description', content: 'Rubber Duck Debugging Manifest' },
+              {
+                name: 'keywords',
+                content: 'gatsby, sanity, react, javascript, jamstack, web dev, yolo',
+              },
+              {
+                name: 'og:title',
+                content: pageData.title ? `${pageData.title}: Slashstar` : 'Slashstar',
+              },
+              { name: 'og:image', content: pageData.imageUrl ? pageData.imageUrl : '' },
+              { name: 'og:description', content: pageData.excerpt ? toPlainText(pageData.excerpt) : '' },
+            ]}
+            htmlAttributes={{ lang: 'en' }}
+          />
+          <Global styles={globalStyle} />
+          {children}
+        </>
+      </ThemeProvider>
+    )}
   />
 );
 
@@ -64,6 +72,7 @@ PageWrapper.defaultProps = {};
 
 PageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
+  pageData: PropTypes.object.isRequired,
 };
 
 export default PageWrapper;
