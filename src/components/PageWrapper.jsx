@@ -51,15 +51,13 @@ const PageWrapper = ({ children, pageData }) => (
                 name: 'keywords',
                 content: 'gatsby, sanity, react, javascript, jamstack, web dev, yolo',
               },
-              {
-                name: 'og:title',
-                content: pageData && pageData.title ? `${pageData.title}: Slashstar` : 'Slashstar',
-              },
-              { name: 'og:image', content: pageData && pageData.imageUrl ? pageData.imageUrl : '' },
-              { name: 'og:description', content: pageData && pageData.excerpt ? toPlainText(pageData.excerpt) : '' },
             ]}
             htmlAttributes={{ lang: 'en' }}
-          />
+          >
+            {pageData && pageData.imageUrl && <meta property="og:image" content={pageData.imageUrl} />}
+            {pageData && pageData.title && <meta property="og:title" content={pageData.title} />}
+            {pageData && pageData.excerpt && <meta property="og:description" content={toPlainText(pageData.excerpt)} />}
+          </Helmet>
           <Global styles={globalStyle} />
           {children}
         </>
