@@ -31,7 +31,7 @@ const BlogPostTemplate = ({ data, errors }) => {
               <PostGrid>
                 <PageHeader />
                 {mainImage.asset && (
-                  <BigImage img={mainImage} />
+                  <BigImage img={mainImage} shadow />
                 )}
                 <Article>
                   <div className="shadow-boxer">

@@ -2,53 +2,43 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-
 import { imageUrlFor, buildImageObj } from '../lib/helpers/sanity-helpers';
 
 const StyledFigure = styled.figure`
-  margin: 2rem 0;
-  padding: 0;
-  img {
-    ${(props) => {
+  max-width: 100%;
+  ${(props) => {
     switch (props.align) {
       case 'left':
-        return 'width: 50%; float: left; margin-right: 2.5rem;';
+        return 'max-width: 30%; float: left;';
+
       case 'right':
-        return 'width: 50%; float: right; margin-left: 2.5rem;';
+        return 'max-width: 30%; float: right;';
+
       case 'center':
       default:
-        return 'width: 100%;';
+        return '';
     }
   }}
+  img {
+    margin: 2rem 0;
+    border: 1em solid #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
   }
 `;
 
-const BlockFigure = (props) => {
-  const { asset, alt, caption, aligned } = props;
+const BlockFigure = ({ node }) => {
+  const { asset, alt, caption, aligned } = node;
   return (
-    <StyledFigure align={aligned} {...props}>
-      {asset && (
-        <img
-          src={imageUrlFor(buildImageObj(props)).fit('max')}
-          alt={alt}
-        />
-      )}
+    <StyledFigure align={aligned}>
+      {asset && <img alt={alt} src={imageUrlFor(buildImageObj(node)).fit('max')} />}
       {caption && <figcaption className="block-inline-figure__caption">{caption}</figcaption>}
     </StyledFigure>
   );
 };
 
-BlockFigure.defaultProps = {
-  alt: 'inline-image',
-  caption: undefined,
-  aligned: 'center',
-};
-
 BlockFigure.propTypes = {
-  asset: PropTypes.object.isRequired,
-  alt: PropTypes.string,
-  caption: PropTypes.string,
-  aligned: PropTypes.oneOf(['left', 'right', 'center']),
+  node: PropTypes.object.isRequired,
 };
 
 export default BlockFigure;

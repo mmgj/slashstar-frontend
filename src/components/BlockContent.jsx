@@ -10,26 +10,29 @@ import BlockCode from './BlockCode';
 import Heading from './Heading';
 
 const ResponsiveWrapper = styled.div`
-    background: ${props => props.theme.colors.black};
-    border: 1px solid ${props => props.theme.colors.black};
-    position: relative;
-    margin: 5rem auto;
-    padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
-    .react-player {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
+  background: ${props => props.theme.colors.black};
+  border: 1px solid ${props => props.theme.colors.black};
+  position: relative;
+  margin: 5rem auto;
+  padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 `;
 
 const StyledSection = styled.section`
   margin: 1rem 0;
   font-family: ${props => props.theme.fonts.body};
+`;
+
+const StyledBase = styled(BaseBlockContent)`
   a, a:visited {
-        color: ${props => darken(0.4, props.theme.colors.secondary)};
-        text-decoration: none;
-        border-bottom: 2px solid ${props => props.theme.colors.secondary};
-      }
+      color: ${props => darken(0.4, props.theme.colors.secondary)};
+      text-decoration: none;
+      border-bottom: 2px solid ${props => props.theme.colors.secondary};
+    }
 `;
 
 const serializers = {
@@ -46,16 +49,48 @@ const serializers = {
     block({ node: { language, style }, children }) {
       switch (style) {
         case 'h1':
-          return <Heading inline h={1}>{children}</Heading>;
+          return (
+            <Heading inline h={1}>
+              {children}
+            </Heading>
+          );
 
         case 'h2':
-          return <Heading inline h={2}>{children}</Heading>;
+          return (
+            <Heading inline h={2}>
+              {children}
+            </Heading>
+          );
 
         case 'h3':
-          return <Heading inline h={3}>{children}</Heading>;
+          return (
+            <Heading inline h={3}>
+              {children}
+            </Heading>
+          );
 
         case 'h4':
-          return <Heading inline h={4} style={{ fontStyle: 'italic' }}>{children}</Heading>;
+          return (
+            <Heading inline h={4} style={{ fontStyle: 'italic' }}>
+              {children}
+            </Heading>
+          );
+
+        case 'h5':
+          return (
+            <Heading
+              inline
+              h={5}
+              style={{
+                // fontStyle: 'italic',
+                color: 'darkgray',
+                fontWeight: 100,
+                fontSize: '2.4rem',
+              }}
+            >
+              {children}
+            </Heading>
+          );
 
         case 'small':
           return <small>{children}</small>;
@@ -64,21 +99,24 @@ const serializers = {
           return <blockquote className="block-blockquote">{children}</blockquote>;
 
         case 'code':
-          return <code className={`language-${language || 'javascript'}`} style={{ display: 'inline-block' }}>{children}</code>;
+          return (
+            <code
+              className={`language-${language || 'javascript'}`}
+              style={{ display: 'inline-block' }}
+            >
+              {children}
+            </code>
+          );
 
         default:
           return <StyledSection>{children}</StyledSection>;
       }
     },
     code({ node: { code, language } }) {
-      return (
-        <BlockCode language={language}>
-          {code}
-        </BlockCode>
-      );
+      return <BlockCode language={language}>{code}</BlockCode>;
     },
     figure({ node }) {
-      return <BlockFigure {...node} />;
+      return <BlockFigure node={node} />;
     },
     videoEmbed({ node }) {
       return (
@@ -96,7 +134,7 @@ const serializers = {
   },
 };
 
-const BlockContent = ({ blocks }) => <BaseBlockContent blocks={blocks} serializers={serializers} />;
+const BlockContent = ({ blocks }) => <StyledBase blocks={blocks} serializers={serializers} />;
 
 BlockContent.propTypes = {
   blocks: PropTypes.array.isRequired,

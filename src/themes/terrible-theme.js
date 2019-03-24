@@ -16,7 +16,7 @@ export default {
     headings: secondaryFont,
     ui: tertiaryFont,
   },
-  sizes: {
+  sizes: {
     ...sizes,
     base: '62,5%',
     body: '1.6rem',

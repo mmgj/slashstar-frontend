@@ -17,7 +17,7 @@ const AboutPage = () => {
     page: sanityPage(_id: { regex: "/(drafts.|)about/" }) {
       id
       title
-      _rawBody
+      _rawBody(resolveReferences: {maxDepth: 5})
       mainImage {
         alt
         asset {
@@ -36,7 +36,6 @@ const AboutPage = () => {
     }
   }
   `);
-  console.log('data: ', data);
   const {
     page: { mainImage, title, _rawBody: body },
   } = data;
@@ -53,7 +52,7 @@ const AboutPage = () => {
               h={1}
               css={theme => ({
                 color: theme.colors.black,
-                marginBottom: '1rem',
+                marginBottom: '4rem',
                 textShadow: `
                   1px 0px 1px #ccc, 0px 1px 1px #eee,
                   2px 1px 1px #ccc, 1px 2px 1px #eee,

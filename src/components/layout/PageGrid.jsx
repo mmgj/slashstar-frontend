@@ -17,7 +17,7 @@ const StyledContainer = styled.div`
   header {
     grid-row: 1;
   }
-  figure {
+  figure.big-image {
     grid-column: 1 / -1;
   }
   article {

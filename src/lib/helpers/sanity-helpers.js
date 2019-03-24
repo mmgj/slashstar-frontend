@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import imageUrlBuilder from '@sanity/image-url';
+import { getFluidGatsbyImage } from 'gatsby-source-sanity';
 
 
 /** Image Helpers */
+
+export async function inlineFluid(img, width) {
+  const item = await getFluidGatsbyImage(img, { maxWidth: width }, { projectId: process.env.GATSBY_PROJECT_ID, dataset: process.env.GATSBY_DATA_SET });
+  console.log('item: ', item);
+  return item;
+}
 
 const builder = imageUrlBuilder({
   projectId: process.env.GATSBY_PROJECT_ID,
