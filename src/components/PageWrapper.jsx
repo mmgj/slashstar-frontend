@@ -37,7 +37,8 @@ const globalStyle = css`
   }
 `;
 
-const PageWrapper = ({ children, pageData }) => (
+const PageWrapper = ({ children, pageData }) => {
+  return (
   <StaticQuery
     query={setupQuery}
     render={() => (
@@ -45,17 +46,10 @@ const PageWrapper = ({ children, pageData }) => (
         <>
           <Helmet
             title="Slash Star Dot Dev"
-            meta={[
-              { name: 'description', content: 'Rubber Duck Debugging Manifest' },
-              {
-                name: 'keywords',
-                content: 'gatsby, sanity, react, javascript, jamstack, web dev, yolo',
-              },
-            ]}
             htmlAttributes={{ lang: 'en' }}
           >
             {pageData && pageData.imageUrl && <meta property="og:image" content={pageData.imageUrl} />}
-            {pageData && pageData.title && <meta property="og:title" content={pageData.title} />}
+            {pageData && pageData.title && <meta property="og:title" content={`Slashstar : ${pageData.title}`} />}
             {pageData && pageData.excerpt && <meta property="og:description" content={toPlainText(pageData.excerpt)} />}
           </Helmet>
           <Global styles={globalStyle} />
@@ -65,6 +59,7 @@ const PageWrapper = ({ children, pageData }) => (
     )}
   />
 );
+          }
 
 PageWrapper.defaultProps = {};
 
