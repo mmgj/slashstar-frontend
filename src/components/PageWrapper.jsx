@@ -53,10 +53,10 @@ const PageWrapper = ({ children, pageData }) => (
               },
               {
                 name: 'og:title',
-                content: pageData.title ? `${pageData.title}: Slashstar` : 'Slashstar',
+                content: pageData && pageData.title ? `${pageData.title}: Slashstar` : 'Slashstar',
               },
-              { name: 'og:image', content: pageData.imageUrl ? pageData.imageUrl : '' },
-              { name: 'og:description', content: pageData.excerpt ? toPlainText(pageData.excerpt) : '' },
+              { name: 'og:image', content: pageData && pageData.imageUrl ? pageData.imageUrl : '' },
+              { name: 'og:description', content: pageData && pageData.excerpt ? toPlainText(pageData.excerpt) : '' },
             ]}
             htmlAttributes={{ lang: 'en' }}
           />
