@@ -37,7 +37,7 @@ const globalStyle = css`
   }
 `;
 
-const PageWrapper = ({ children, pageData, ...props }) => {
+const PageWrapper = ({ children, pageTitle, pageImage, pageExcerpt, pageLocation }) => {
   return (
     <StaticQuery
       query={setupQuery}
@@ -45,10 +45,10 @@ const PageWrapper = ({ children, pageData, ...props }) => {
         <ThemeProvider theme={theme}>
           <>
             <SEO
-              pageTitle={pageData.title}
-              pageImage={pageData.imageUrl}
-              pageExcerpt={pageData.excerpt}
-              location={pageData.location}
+              pageTitle={pageTitle}
+              pageImage={pageImage}
+              pageExcerpt={pageExcerpt}
+              location={pageLocation}
             />
             <Global styles={globalStyle} />
             {children}
@@ -59,11 +59,23 @@ const PageWrapper = ({ children, pageData, ...props }) => {
   );
     }
 
-PageWrapper.defaultProps = {};
+PageWrapper.defaultProps = {
+  pageTitle: 'slashstar.dev',
+  pageImage: 'https://picsum.photos/1200/630/?random',
+  pageExcerpt: 'Well, this is embarrassing...',
+  pageLocation: {
+    host: 'slashstar.dev',
+    href: 'https://slashstar.dev',
+  },
+};
 
 PageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
-  pageData: PropTypes.object.isRequired,
+  pageTitle: PropTypes.string,
+  pageImage: PropTypes.string,
+  pageExcerpt: PropTypes.string,
+  pageLocation: PropTypes.object,
+
 };
 
 export default PageWrapper;
