@@ -14,18 +14,26 @@ import Article from '../components/Article';
 import PostGrid from '../components/layout/PostGrid';
 
 import BespokePost from './bespoke-post';
-import { imageUrlFor } from '../lib/helpers/sanity-helpers';
+import { imageUrlFor, toPlainText } from '../lib/helpers/sanity-helpers';
 
 
-const BlogPostTemplate = ({ data, errors }) => {
+const BlogPostTemplate = ({ data, errors, location }) => {
   const {
     post: { mainImage, title, _rawBody: body, bespoke, _rawExcerpt: excerpt },
   } = data;
+
   return (
     <>
       {errors && <h1>Errored!</h1>}
       {data && (
-        <PageWrapper pageData={{ title, imageUrl: imageUrlFor(mainImage).url(), excerpt }}>
+        <PageWrapper
+          pageData={{
+            title,
+            location,
+            imageUrl: imageUrlFor(mainImage).url(),
+            excerpt: toPlainText(excerpt),
+          }}
+        >
           {bespoke
             ? (<BespokePost data={data} />)
             : (
@@ -70,11 +78,13 @@ const BlogPostTemplate = ({ data, errors }) => {
 BlogPostTemplate.defaultProps = {
   data: undefined,
   errors: undefined,
+  location: undefined,
 };
 
 BlogPostTemplate.propTypes = {
   data: PropTypes.object,
   errors: PropTypes.object,
+  location: PropTypes.object,
 };
 
 export const query = graphql`

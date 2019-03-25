@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   plugins: [
-    // 'gatsby-plugin-postcss',
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
     'gatsby-plugin-sass',
     'gatsby-transformer-sharp',

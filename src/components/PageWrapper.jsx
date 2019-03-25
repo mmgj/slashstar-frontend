@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 // ⬇⬇ It seems including an actual css file is necessary for putting styles on the root <html> element.
 import '../styles/main.css';
 import theme from '../themes/default-theme';
-import { toPlainText } from '../lib/helpers/sanity-helpers';
+import SEO from './SEO';
 
 const setupQuery = graphql`
   query MetaQuery {
@@ -37,29 +37,27 @@ const globalStyle = css`
   }
 `;
 
-const PageWrapper = ({ children, pageData }) => {
+const PageWrapper = ({ children, pageData, ...props }) => {
   return (
-  <StaticQuery
-    query={setupQuery}
-    render={() => (
-      <ThemeProvider theme={theme}>
-        <>
-          <Helmet
-            title="Slash Star Dot Dev"
-            htmlAttributes={{ lang: 'en' }}
-          >
-            {pageData && pageData.imageUrl && <meta property="og:image" content={pageData.imageUrl} />}
-            {pageData && pageData.title && <meta property="og:title" content={`Slashstar : ${pageData.title}`} />}
-            {pageData && pageData.excerpt && <meta property="og:description" content={toPlainText(pageData.excerpt)} />}
-          </Helmet>
-          <Global styles={globalStyle} />
-          {children}
-        </>
-      </ThemeProvider>
-    )}
-  />
-);
-          }
+    <StaticQuery
+      query={setupQuery}
+      render={() => (
+        <ThemeProvider theme={theme}>
+          <>
+            <SEO
+              pageTitle={pageData.title}
+              pageImage={pageData.imageUrl}
+              pageExcerpt={pageData.excerpt}
+              location={pageData.location}
+            />
+            <Global styles={globalStyle} />
+            {children}
+          </>
+        </ThemeProvider>
+      )}
+    />
+  );
+    }
 
 PageWrapper.defaultProps = {};
 
