@@ -1,5 +1,8 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import { PropTypes } from 'prop-types';
+
+import { toPlainText, imageUrlFor } from '../lib/helpers/sanity-helpers';
 
 import PageGrid from '../components/layout/PageGrid';
 import PageHeader from '../components/PageHeader';
@@ -11,7 +14,7 @@ import BlockContent from '../components/BlockContent';
 import Article from '../components/Article';
 
 
-const AboutPage = () => {
+const AboutPage = ({ location }) => {
   const data = useStaticQuery(graphql`
   query AboutPageQuery {
     page: sanityPage(_id: { regex: "/(drafts.|)about/" }) {
@@ -40,7 +43,12 @@ const AboutPage = () => {
     page: { mainImage, title, _rawBody: body },
   } = data;
   return (
-    <PageWrapper>
+    <PageWrapper
+      pageTitle={title}
+      pageLocation={location}
+      pageImage={imageUrlFor(mainImage.asset).url()}
+      pageExcerpt={`${toPlainText(body).substr(0, 195)}...`}
+    >
       <PageGrid>
         <PageHeader />
         {mainImage.asset && (
@@ -73,6 +81,10 @@ const AboutPage = () => {
       </PageGrid>
     </PageWrapper>
   );
+};
+
+AboutPage.propTypes = {
+  location: PropTypes.object.isRequired,
 };
 
 export default AboutPage;

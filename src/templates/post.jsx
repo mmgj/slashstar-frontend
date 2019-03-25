@@ -27,11 +27,11 @@ const BlogPostTemplate = ({ data, errors, location }) => {
       {errors && <h1>Errored!</h1>}
       {data && (
         <PageWrapper
-            pageTitle={title}
-            pageLocation={location}
-            pageImage={imageUrlFor(mainImage).url()}
-            pageExcerpt={toPlainText(excerpt)}
-          >
+          pageTitle={title}
+          pageLocation={location}
+          pageImage={imageUrlFor(mainImage).url()}
+          pageExcerpt={toPlainText(excerpt)}
+        >
           {bespoke
             ? (<BespokePost data={data} />)
             : (

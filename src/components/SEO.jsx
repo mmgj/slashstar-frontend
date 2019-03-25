@@ -16,8 +16,11 @@ const SEO = ({ pageTitle, pageImage, pageExcerpt, location }) => {
   `);
 
   return (
-    <Helmet>
-
+    <Helmet
+      htmlAttributes={{ lang: 'en' }}
+    >
+      <title>{`${siteData.site.title} - ${pageTitle || ''}`}</title>
+      <meta name="description" content={siteData.site.description} />
       {/* Open Graph */}
 
       <meta property="og:type" content="website" />
