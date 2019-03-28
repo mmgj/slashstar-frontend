@@ -1,3 +1,3 @@
 # Slashstar Documentation
 
-Stay tuned
+Best thing since wrestling
