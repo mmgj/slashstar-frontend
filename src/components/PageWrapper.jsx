@@ -5,8 +5,6 @@
 */
 
 import React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'emotion-theming';
 import { Global, css } from '@emotion/core';
 import PropTypes from 'prop-types';
@@ -14,16 +12,6 @@ import PropTypes from 'prop-types';
 import '../styles/main.css';
 import theme from '../themes/default-theme';
 import SEO from './SEO';
-
-const setupQuery = graphql`
-  query MetaQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      title
-      description
-      keywords
-    }
-  }
-`;
 
 const globalStyle = css`
   html {
@@ -37,32 +25,26 @@ const globalStyle = css`
   }
 `;
 
-const PageWrapper = ({ children, pageTitle, pageImage, pageExcerpt, pageLocation }) => {
-  return (
-    <StaticQuery
-      query={setupQuery}
-      render={() => (
-        <ThemeProvider theme={theme}>
-          <>
-            <SEO
-              pageTitle={pageTitle}
-              pageImage={pageImage}
-              pageExcerpt={pageExcerpt}
-              location={pageLocation}
-            />
-            <Global styles={globalStyle} />
-            {children}
-          </>
-        </ThemeProvider>
-      )}
-    />
+const PageWrapper = ({ children, pageTitle, pageImage, pageExcerpt, pageLocation }) =>
+  (
+    <ThemeProvider theme={theme}>
+      <>
+        <SEO
+          pageTitle={pageTitle}
+          pageImage={pageImage}
+          pageExcerpt={pageExcerpt}
+          location={pageLocation}
+        />
+        <Global styles={globalStyle} />
+        {children}
+      </>
+    </ThemeProvider>
   );
-    }
 
 PageWrapper.defaultProps = {
   pageTitle: 'slashstar.dev',
   pageImage: 'https://picsum.photos/1200/630/?random',
-  pageExcerpt: 'Well, this is embarrassing...',
+  pageExcerpt: undefined,
   pageLocation: {
     host: 'slashstar.dev',
     href: 'https://slashstar.dev',

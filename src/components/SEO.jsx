@@ -54,8 +54,8 @@ SEO.defaultProps = {
   pageExcerpt: undefined,
   location: {
     host: 'slashstar.dev',
-    href: 'https://slashstar.dev'
-  }
+    href: 'https://slashstar.dev',
+  },
 };
 
 SEO.propTypes = {
