@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import styled from '@emotion/styled';
 
 import Brand from './Brand';
-import Icon from './icons';
+import Icon from './Icon';
 
 const StyledHeader = styled.header`
   display: flex;

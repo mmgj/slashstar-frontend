@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-import { imageUrlFor, buildImageObj } from '../lib/helpers/sanity-helpers';
+import { imageUrlFor, buildImageObj } from '../../lib/helpers/sanity-helpers';
 
 const StyledFigure = styled.figure`
   max-width: 100%;

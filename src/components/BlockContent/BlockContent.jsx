@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 import { darken } from 'polished';
 import BlockFigure from './BlockFigure';
 import BlockCode from './BlockCode';
-import Heading from './Heading';
+import Heading from '../Heading';
 
 const ResponsiveWrapper = styled.div`
   background: ${props => props.theme.colors.black};

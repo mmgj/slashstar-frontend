@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
-import Heading from './Heading';
+import Heading from '../Heading';
 
 const StyledBrand = styled(Heading)`
     display: inline-block;

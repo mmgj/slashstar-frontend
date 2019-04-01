@@ -1,8 +1,8 @@
+/* TODO: Write out SEO cascade */
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-
 
 const SEO = ({ pageTitle, pageImage, pageExcerpt, location }) => {
   const siteData = useStaticQuery(graphql`
@@ -11,16 +11,19 @@ const SEO = ({ pageTitle, pageImage, pageExcerpt, location }) => {
       title
       description
       keywords
+      ...metaQuery
     }
   }
   `);
 
+  const { site } = siteData;
   return (
     <Helmet
       htmlAttributes={{ lang: 'en' }}
     >
-      <title>{`${siteData.site.title} - ${pageTitle || ''}`}</title>
-      <meta name="description" content={siteData.site.description} />
+      <title>{`${site.title} - ${pageTitle || ''}`}</title>
+      <meta name="description" content={site.description} />
+
       {/* Open Graph */}
 
       <meta property="og:type" content="website" />

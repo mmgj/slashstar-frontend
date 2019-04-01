@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Prism from '../lib/aux/prism';
-import '../lib/aux/prism-monokai.css';
+import Prism from './prism';
+import './prism-monokai.css';
 
 const BlockCode = ({ language, children }) => {
   useEffect(() => {
