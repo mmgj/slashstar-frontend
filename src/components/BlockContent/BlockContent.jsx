@@ -24,13 +24,13 @@ const ResponsiveWrapper = styled.div`
 `;
 
 const StyledSection = styled.section`
-  margin: 1rem 0;
+  margin: 2.5rem 0;
   font-family: ${props => props.theme.fonts.body};
 `;
 
 const StyledBase = styled(BaseBlockContent)`
   a, a:visited {
-      color: ${props => darken(0.4, props.theme.colors.secondary)};
+      color: ${props => darken(0.5, props.theme.colors.secondary)};
       text-decoration: none;
       border-bottom: 2px solid ${props => props.theme.colors.secondary};
     }
