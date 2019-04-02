@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 import { darken } from 'polished';
 import BlockFigure from './BlockFigure';
 import BlockCode from './BlockCode';
-/*TODO: Heading => BlockHeading  */
+/* TODO: Heading => BlockHeading  */
 import Heading from '../Heading';
 
 const ResponsiveWrapper = styled.div`

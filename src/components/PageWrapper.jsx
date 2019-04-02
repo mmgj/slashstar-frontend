@@ -25,7 +25,7 @@ const globalStyle = css`
   }
 `;
 
-const PageWrapper = ({ children, pageTitle, pageImage, pageExcerpt, pageLocation }) =>
+const PageWrapper = ({ children, pageTitle, pageImage, pageExcerpt, pageMeta, pageLocation }) =>
   (
     <ThemeProvider theme={theme}>
       <>
@@ -33,6 +33,7 @@ const PageWrapper = ({ children, pageTitle, pageImage, pageExcerpt, pageLocation
           pageTitle={pageTitle}
           pageImage={pageImage}
           pageExcerpt={pageExcerpt}
+          pageMeta={pageMeta}
           location={pageLocation}
         />
         <Global styles={globalStyle} />
@@ -45,6 +46,7 @@ PageWrapper.defaultProps = {
   pageTitle: 'slashstar.dev',
   pageImage: 'https://picsum.photos/1200/630/?random',
   pageExcerpt: undefined,
+  pageMeta: undefined,
   pageLocation: {
     host: 'slashstar.dev',
     href: 'https://slashstar.dev',
@@ -54,8 +56,9 @@ PageWrapper.defaultProps = {
 PageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   pageTitle: PropTypes.string,
-  pageImage: PropTypes.string,
+  pageImage: PropTypes.object,
   pageExcerpt: PropTypes.string,
+  pageMeta: PropTypes.object,
   pageLocation: PropTypes.object,
 
 };

@@ -11,6 +11,7 @@ export const metaQuery = graphql`
       twitterDescription
       twitterImage {
         asset {
+          _id
           id
           fixed {
             base64
@@ -26,6 +27,7 @@ export const metaQuery = graphql`
       }
       openImage {
         asset {
+          _id
           id
           fixed {
             base64

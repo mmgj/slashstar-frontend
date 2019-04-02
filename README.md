@@ -1,7 +1,7 @@
 # Slashstar
+![Slashstar Glyph]('/static/slashstar_glyph_og.png')
 
 > Source code for [slashstar.dev](https://slashstar.dev) frontend. Built with Gatsby and Emotion.
 
-## The Why
-
-The intent of the web site was to serve as a playground for trying out different stuff in the JAMStack-vicinity. It's a learn-as-I-go experience for me, and now everyone is welcome to follow along. 
+This code is made available for the purpose of serving as an example, be it good or bad. 
+Use it as you please, but if it all goes wonky you aren't allowed to sue me.

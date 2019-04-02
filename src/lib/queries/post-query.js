@@ -43,4 +43,46 @@ export const postQuery = graphql`
       _rawBody(resolveReferences: {maxDepth: 5})
       _rawAuthors(resolveReferences: {maxDepth: 5})
       _rawExcerpt
+      pageMeta {
+        metaKeywords
+        metaTitle
+        openGraphTitle
+        openGraphDescription
+        openImage {
+          _type
+          asset {
+            _id
+            id
+            fixed(width:1200) {
+              base64
+              aspectRatio
+              width
+              height
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+            }
+          }
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage {
+          _type
+          asset {
+            _id
+            id
+            fixed(width:800) {
+              base64
+              aspectRatio
+              width
+              height
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+            }
+          }
+        }
+      }
   }`;

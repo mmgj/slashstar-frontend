@@ -44,7 +44,7 @@ export default () => {
       <IndexGrid>
         <PageHeader />
         <Posts>
-          <Heading h={2} style={{ color: 'lightgray', marginRight: 10 }}>recently</Heading>
+          <Heading h={2} style={{ color: 'gray', marginRight: 10 }}>recently</Heading>
           {edges.map(item => <PostPreview key={item.node.id} item={item} />)}
         </Posts>
         <PageFooter>
