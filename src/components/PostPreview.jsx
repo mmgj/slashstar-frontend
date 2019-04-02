@@ -44,7 +44,7 @@ const Preview = styled(Link)`
   }
 
   @media(max-width: ${props => props.theme.media.medium}px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: center;
     align-items: flex-end;
     margin: 0 auto;
@@ -56,7 +56,6 @@ const Preview = styled(Link)`
     }
   }
   @media(max-width: ${props => props.theme.media.small}px) {
-    flex-direction: column-reverse;
     margin: 0 3rem;
     .zoombox-outer {
       max-width: calc(100vw - 6rem);
