@@ -54,11 +54,11 @@ export const colors = {
 
 
 export const media = {
-  xlarge: 1400,
-  large: 1200,
+  xlarge: 1399,
+  large: 1199,
   medium: 1023,
   small: 767,
-  xsmall: 450,
+  xsmall: 449,
 };
 
 /* eslint key-spacing: 0 */
