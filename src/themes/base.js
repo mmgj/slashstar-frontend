@@ -56,8 +56,8 @@ export const colors = {
 export const media = {
   xlarge: 1400,
   large: 1200,
-  medium: 1024,
-  small: 768,
+  medium: 1023,
+  small: 767,
   xsmall: 450,
 };
 
