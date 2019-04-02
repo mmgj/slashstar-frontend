@@ -46,19 +46,20 @@ const Preview = styled(Link)`
   @media(max-width: ${props => props.theme.media.medium}px) {
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     margin: 0 auto;
     ${Text} {
       margin: 0 1rem;
     }
     .zoombox-outer {
-        max-width: calc(100vw - 2rem);
+      max-width: calc(100vw - 2rem);
     }
   }
   @media(max-width: ${props => props.theme.media.small}px) {
     flex-direction: column-reverse;
+    margin: 0 3rem;
     .zoombox-outer {
-      max-width: calc(100vw - 2rem);
+      max-width: calc(100vw - 6rem);
       width: 100%;
     }
     background: #fafafa;
