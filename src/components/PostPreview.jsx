@@ -76,7 +76,7 @@ const Preview = styled(Link)`
     }
     .zoombox-outer {
       /* height: 300px; */
-      max-width: calc(100vw - 2rem);
+      max-width: calc(100vw);
       margin-right: -1rem;
     }
   }
