@@ -27,6 +27,9 @@ const SEO = ({ pageTitle, pageImage, pageExcerpt, pageMeta, location }) => {
   `);
 
   const { site } = siteData;
+  // FIXME: Shoddy temporary fix for empty nodes coming in as null.
+  // eslint-disable-next-line
+  if (pageMeta === null) pageMeta = {};
   return (
     <Helmet
       htmlAttributes={{ lang: 'en' }}
@@ -39,19 +42,19 @@ const SEO = ({ pageTitle, pageImage, pageExcerpt, pageMeta, location }) => {
       <meta property="og:type" content="website" />
       <meta property="article:author" content="Martin Jacobsen" />
       <meta property="og:url" content={location.href} />
-      <meta property="og:title" content={pageMeta.openGraphTitle || pageTitle || siteData.site.title} />
+      <meta property="og:title" content={pageMeta.openGraphTitle || pageTitle || site.title} />
       <meta property="og:image" content={resolveImage(pageMeta.openImage) || resolveImage(pageImage) || resolveImage(site.siteMeta.openImage)} />
-      <meta property="og:description" content={pageMeta.openGraphTitle || pageExcerpt || siteData.site.description} />
-      <meta property="og:site_name" content={siteData.site.title} />
+      <meta property="og:description" content={pageMeta.openGraphTitle || pageExcerpt || site.description} />
+      <meta property="og:site_name" content={site.title} />
 
       {/* Twitter */}
 
       <meta name="twitter:site" content="@slashstar_dev" />
       <meta name="twitter:creator" content="@mmenneske" />
-      <meta name="twitter:card" content={pageMeta.twitterDescription || pageExcerpt || siteData.site.description} />
+      <meta name="twitter:card" content={pageMeta.twitterDescription || pageExcerpt || site.description} />
       <meta name="twitter:url" content={location.href} />
-      <meta name="twitter:title" content={pageMeta.twitterTitle || pageTitle || siteData.site.title} />
-      <meta name="twitter:description" content={pageMeta.twitterDescription || pageExcerpt || siteData.site.description} />
+      <meta name="twitter:title" content={pageMeta.twitterTitle || pageTitle || site.title} />
+      <meta name="twitter:description" content={pageMeta.twitterDescription || pageExcerpt || site.description} />
       <meta name="twitter:image" content={resolveImage(pageMeta.twitterImage) || resolveImage(pageImage) || resolveImage(site.siteMeta.twitterImage)} />
 
       {/* Misc */}

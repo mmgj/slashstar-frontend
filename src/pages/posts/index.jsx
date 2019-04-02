@@ -19,7 +19,7 @@ const Posts = styled.div`
   margin: 0;
   text-align: right;
   @media(max-width: ${props => props.theme.media.small}px) {
-    grid-column: 1 / 17;
+    grid-column: 2 / 16;
   }
 `;
 
