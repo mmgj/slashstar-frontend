@@ -5,7 +5,6 @@ import PageWrapper from '../components/PageWrapper';
 import PageHeader from '../components/PageHeader';
 import PostPreview from '../components/PostPreview';
 import PageFooter from '../components/PageFooter';
-import Heading from '../components/Heading';
 import IndexGrid from '../components/layout/IndexGrid';
 
 
@@ -44,7 +43,6 @@ export default () => {
       <IndexGrid>
         <PageHeader />
         <Posts>
-          <Heading h={2} style={{ color: 'gray', marginRight: 10 }}>recently</Heading>
           {edges.map(item => <PostPreview key={item.node.id} item={item} />)}
         </Posts>
         <PageFooter>

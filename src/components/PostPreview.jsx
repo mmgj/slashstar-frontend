@@ -14,7 +14,7 @@ const Text = styled.div`
   h1 {
     font-family: ${props => props.theme.fonts.headings};
     color: ${props => props.theme.colors.darkgray};
-    margin: 0;
+    margin: 0 0 -1.5rem 0;
   }
   p {
     margin: .8rem;
