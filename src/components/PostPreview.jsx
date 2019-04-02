@@ -77,7 +77,6 @@ const Preview = styled(Link)`
     .zoombox-outer {
       /* height: 300px; */
       max-width: calc(100vw);
-      margin-right: -2rem;
     }
   }
 `;
