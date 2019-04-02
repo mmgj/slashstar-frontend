@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+/* TODO: Prism should probably be a peer dependency  */
 import Prism from './prism';
 import './prism-monokai.css';
 

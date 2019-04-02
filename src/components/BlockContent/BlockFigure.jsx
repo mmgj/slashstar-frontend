@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
+/* TODO: Inline this */
 import { imageUrlFor, buildImageObj } from '../../lib/helpers/sanity-helpers';
 
 const StyledFigure = styled.figure`
