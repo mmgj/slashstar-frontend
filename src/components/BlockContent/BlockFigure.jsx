@@ -6,18 +6,18 @@ import styled from '@emotion/styled';
 import { imageUrlFor, buildImageObj } from '../../lib/helpers/sanity-helpers';
 
 const StyledFigure = styled.figure`
-  max-width: 100%;
+  max-width: 70%;
   ${(props) => {
     switch (props.align) {
       case 'left':
-        return 'max-width: 30%; float: left;';
+        return 'max-width: 50%; float: left;';
 
       case 'right':
-        return 'max-width: 30%; float: right;';
+        return 'max-width: 40%; float: right;';
 
       case 'center':
       default:
-        return '';
+        return 'margin: 0 auto;';
     }
   }}
   img {
@@ -26,6 +26,10 @@ const StyledFigure = styled.figure`
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     max-width: 100%;
   }
+  .block-inline-figure-caption {
+    font-style: italic;
+    color: darkgray;
+  }
 `;
 
 const BlockFigure = ({ node }) => {
@@ -33,7 +37,7 @@ const BlockFigure = ({ node }) => {
   return (
     <StyledFigure align={aligned}>
       {asset && <img alt={alt} src={imageUrlFor(buildImageObj(node)).fit('max')} />}
-      {caption && <figcaption className="block-inline-figure__caption">{caption}</figcaption>}
+      {caption && <figcaption className="block-inline-figure-caption">{caption}</figcaption>}
     </StyledFigure>
   );
 };

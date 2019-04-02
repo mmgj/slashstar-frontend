@@ -1,6 +1,7 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import BaseBlockContent from '@sanity/block-content-to-react';
 import ReactPlayer from 'react-player';
 import styled from '@emotion/styled';
@@ -36,11 +37,14 @@ const StyledBase = styled(BaseBlockContent)`
     }
 `;
 
+const getPath = type => (type === 'post' ? '/posts/' : '/');
+
+
 const serializers = {
   // FIXME: ⬇ Make this work!
   marks: {
-    internalLink() {
-      return <span>oops</span>;
+    intLink({ mark, children }) {
+      return <Link to={`${getPath(mark.reference._type)}${mark.reference.slug.current}`}>{children}</Link>;
     },
     abbr({ mark, children }) {
       return <abbr title={mark.title}>{children}</abbr>;
@@ -58,7 +62,7 @@ const serializers = {
 
         case 'h2':
           return (
-            <Heading inline h={2}>
+            <Heading inline h={2} style={{ fontSize: '3.5rem', marginBottom: '2rem' }}>
               {children}
             </Heading>
           );

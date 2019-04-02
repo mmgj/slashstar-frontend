@@ -2,7 +2,7 @@
  * Experimental component for injecting styles
  * into emotion from Sanity.
  * Very much not recommended.
- * https://slashstar.dev/posts/a-tribute-to-geocities
+ * https://slashstar.dev/posts/wysiwyg
  */
 import React from 'react';
 import PropTypes from 'prop-types';
