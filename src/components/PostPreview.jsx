@@ -14,7 +14,7 @@ const Text = styled.div`
   h1 {
     font-family: ${props => props.theme.fonts.headings};
     color: ${props => props.theme.colors.darkgray};
-    margin: 0;
+    margin: 0 0 -1.5rem 0;
   }
   p {
     margin: .8rem;
@@ -44,35 +44,39 @@ const Preview = styled(Link)`
   }
 
   @media(max-width: ${props => props.theme.media.medium}px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    justify-content: center;
     align-items: flex-end;
-    margin: 1rem 1rem 4rem 1rem;
+    margin: 0 auto;
     ${Text} {
       margin: 0 1rem;
     }
     .zoombox-outer {
-        max-width: calc(100vw - 2rem);
+      max-width: calc(100vw - 2rem);
     }
   }
   @media(max-width: ${props => props.theme.media.small}px) {
-    flex-direction: column-reverse;
+    margin: 0 3rem;
     .zoombox-outer {
-        max-width: calc(100vw - 2rem);
-      }
+      max-width: calc(100vw - 6rem);
+      width: 100%;
+    }
     background: #fafafa;
     ${Text} {
       margin-top: 1.1rem;
     }
   }
   @media(max-width: ${props => props.theme.media.xsmall}px) {
-    margin: 0 1rem 0 2rem;
+    margin: 0 0 3.5rem 2rem;
+
     ${Text} {
-      padding-left: 1rem;
+      padding-left: 2rem;
       max-width: calc(100vw);
     }
     .zoombox-outer {
-      height: 300px;
-      max-width: calc(100vw - 3rem);
+      /* height: 300px; */
+      max-width: calc(100vw);
+      margin-right: -1rem;
     }
   }
 `;

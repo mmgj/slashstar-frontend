@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
 const Inner = styled.div`
-  background-color: orange; /* fallback color */
+  background-color: #222;
   background-image: url(${props => props.img});
   background-position: center;
   background-size: cover;
@@ -15,6 +15,8 @@ const Inner = styled.div`
 const Outer = styled.div`
   height: ${props => props.height}px;
   width: ${props => props.width}px;
+  border: 1px solid ${props => props.theme.colors.black};
+  box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.75);
   overflow: hidden;
   cursor: pointer;
   :focus, :hover {

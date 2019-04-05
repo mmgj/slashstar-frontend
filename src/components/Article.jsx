@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
+/* TODO: Rewrite this to contain the .shadow-boxer element */
 
-/*TODO: Rewrite this to contain the .shadow-boxer element */
 const StyledArticle = styled.article`
   margin-top: -15vw;
   z-index: 1;

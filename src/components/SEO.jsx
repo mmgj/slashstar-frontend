@@ -1,10 +1,20 @@
-/* TODO: Write out SEO cascade */
+/**
+ * The values for Open Graph and Twitter cascade as such:
+ * If an override value is defined in the post or page metaCard, use this.
+ * Else if the page<Field]> is defined use this.
+ * Else use the siteSettings value.
+ * I.e. The meta specific overrides the post/page specific which overrides the sitewide.
+*/
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
+import { imageUrlFor } from '../lib/helpers/sanity-helpers';
 
-const SEO = ({ pageTitle, pageImage, pageExcerpt, location }) => {
+
+const resolveImage = sanityImage => (sanityImage ? imageUrlFor(sanityImage.asset).url() : false);
+
+const SEO = ({ pageTitle, pageImage, pageExcerpt, pageMeta, location }) => {
   const siteData = useStaticQuery(graphql`
   query SEOQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
@@ -17,6 +27,9 @@ const SEO = ({ pageTitle, pageImage, pageExcerpt, location }) => {
   `);
 
   const { site } = siteData;
+  // FIXME: Shoddy temporary fix for empty nodes coming in as null.
+  // eslint-disable-next-line
+  if (pageMeta === null) pageMeta = {};
   return (
     <Helmet
       htmlAttributes={{ lang: 'en' }}
@@ -27,23 +40,22 @@ const SEO = ({ pageTitle, pageImage, pageExcerpt, location }) => {
       {/* Open Graph */}
 
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={location.href} />
-      <meta property="og:title" content={pageTitle || siteData.site.title} />
-      <meta property="og:image" content={pageImage} />
-      <meta property="og:description" content={pageExcerpt || siteData.site.description} />
-      <meta property="og:site_name" content={siteData.site.title} />
-      <meta property="og:locale" content="en_US" />
       <meta property="article:author" content="Martin Jacobsen" />
+      <meta property="og:url" content={location.href} />
+      <meta property="og:title" content={pageMeta.openGraphTitle || pageTitle || site.title} />
+      <meta property="og:image" content={resolveImage(pageMeta.openImage) || resolveImage(pageImage) || resolveImage(site.siteMeta.openImage)} />
+      <meta property="og:description" content={pageMeta.openGraphTitle || pageExcerpt || site.description} />
+      <meta property="og:site_name" content={site.title} />
 
       {/* Twitter */}
 
-      <meta name="twitter:card" content={pageExcerpt || siteData.site.description} />
       <meta name="twitter:site" content="@slashstar_dev" />
       <meta name="twitter:creator" content="@mmenneske" />
+      <meta name="twitter:card" content={pageMeta.twitterDescription || pageExcerpt || site.description} />
       <meta name="twitter:url" content={location.href} />
-      <meta name="twitter:title" content={pageTitle || siteData.site.title} />
-      <meta name="twitter:description" content={pageExcerpt || siteData.site.description} />
-      <meta name="twitter:image" content={pageImage} />
+      <meta name="twitter:title" content={pageMeta.twitterTitle || pageTitle || site.title} />
+      <meta name="twitter:description" content={pageMeta.twitterDescription || pageExcerpt || site.description} />
+      <meta name="twitter:image" content={resolveImage(pageMeta.twitterImage) || resolveImage(pageImage) || resolveImage(site.siteMeta.twitterImage)} />
 
       {/* Misc */}
 
@@ -55,6 +67,7 @@ SEO.defaultProps = {
   pageTitle: undefined,
   pageImage: undefined,
   pageExcerpt: undefined,
+  pageMeta: {},
   location: {
     host: 'slashstar.dev',
     href: 'https://slashstar.dev',
@@ -63,8 +76,9 @@ SEO.defaultProps = {
 
 SEO.propTypes = {
   pageTitle: PropTypes.string,
-  pageImage: PropTypes.string,
+  pageImage: PropTypes.object,
   pageExcerpt: PropTypes.string,
+  pageMeta: PropTypes.object,
   location: PropTypes.shape({
     host: PropTypes.string,
     href: PropTypes.string,

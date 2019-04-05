@@ -14,14 +14,13 @@ import Article from '../components/Article';
 import PostGrid from '../components/layout/PostGrid';
 
 import BespokePost from './bespoke-post';
-import { imageUrlFor, toPlainText } from '../lib/helpers/sanity-helpers';
+import { toPlainText } from '../lib/helpers/sanity-helpers';
 
 
 const BlogPostTemplate = ({ data, errors, location }) => {
   const {
-    post: { mainImage, title, _rawBody: body, bespoke, _rawExcerpt: excerpt },
+    post: { mainImage, title, _rawBody: body, bespoke, _rawExcerpt: excerpt, pageMeta },
   } = data;
-
   return (
     <>
       {errors && <h1>Errored!</h1>}
@@ -29,8 +28,9 @@ const BlogPostTemplate = ({ data, errors, location }) => {
         <PageWrapper
           pageTitle={title}
           pageLocation={location}
-          pageImage={imageUrlFor(mainImage).url()}
+          pageImage={mainImage}
           pageExcerpt={toPlainText(excerpt)}
+          pageMeta={pageMeta}
         >
           {bespoke
             ? (<BespokePost data={data} />)

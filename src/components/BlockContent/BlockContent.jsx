@@ -1,13 +1,14 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import BaseBlockContent from '@sanity/block-content-to-react';
 import ReactPlayer from 'react-player';
 import styled from '@emotion/styled';
 import { darken } from 'polished';
 import BlockFigure from './BlockFigure';
 import BlockCode from './BlockCode';
-/*TODO: Heading => BlockHeading  */
+/* TODO: Heading => BlockHeading  */
 import Heading from '../Heading';
 
 const ResponsiveWrapper = styled.div`
@@ -24,23 +25,26 @@ const ResponsiveWrapper = styled.div`
 `;
 
 const StyledSection = styled.section`
-  margin: 1rem 0;
+  margin: 2.5rem 0;
   font-family: ${props => props.theme.fonts.body};
 `;
 
 const StyledBase = styled(BaseBlockContent)`
   a, a:visited {
-      color: ${props => darken(0.4, props.theme.colors.secondary)};
+      color: ${props => darken(0.5, props.theme.colors.secondary)};
       text-decoration: none;
       border-bottom: 2px solid ${props => props.theme.colors.secondary};
     }
 `;
 
+const getPath = type => (type === 'post' ? '/posts/' : '/');
+
+
 const serializers = {
   // FIXME: ⬇ Make this work!
   marks: {
-    internalLink() {
-      return <span>oops</span>;
+    intLink({ mark, children }) {
+      return <Link to={`${getPath(mark.reference._type)}${mark.reference.slug.current}`}>{children}</Link>;
     },
     abbr({ mark, children }) {
       return <abbr title={mark.title}>{children}</abbr>;
@@ -58,7 +62,7 @@ const serializers = {
 
         case 'h2':
           return (
-            <Heading inline h={2}>
+            <Heading inline h={2} style={{ fontSize: '3.5rem', marginBottom: '2rem' }}>
               {children}
             </Heading>
           );

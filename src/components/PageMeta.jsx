@@ -15,7 +15,7 @@ const StyledMeta = styled.aside`
     font-size: 1.6rem;
   }
 `;
-/* REVIEW: Raison de vivre */
+/* REVIEW: Raison de vivre? */
 const PageMeta = ({ data }) => {
   const {
     post: { publishedAt, categories, _rawAuthors: authors },
