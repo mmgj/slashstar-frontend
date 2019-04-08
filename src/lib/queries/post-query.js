@@ -41,8 +41,20 @@ export const postQuery = graphql`
         current
       }
       _rawBody(resolveReferences: {maxDepth: 5})
-      _rawAuthors(resolveReferences: {maxDepth: 5})
       _rawExcerpt
+      authors {
+        _key
+        _type
+        person {
+          id
+          name
+          twitter
+          _rawImage(resolveReferences: {maxDepth: 5})
+          slug {
+            current
+          }
+        }
+      }
       pageMeta {
         metaKeywords
         metaTitle
