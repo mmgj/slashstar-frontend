@@ -18,8 +18,9 @@ const StyledMeta = styled.aside`
 /* REVIEW: Raison de vivre? */
 const PageMeta = ({ data }) => {
   const {
-    post: { publishedAt, categories, _rawAuthors: authors },
+    post: { publishedAt, categories, authors },
   } = data;
+
   return (
     <StyledMeta>
       {publishedAt && (

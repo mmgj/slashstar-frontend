@@ -45,6 +45,7 @@ export const postQuery = graphql`
       authors {
         _key
         _type
+        roles
         person {
           id
           name

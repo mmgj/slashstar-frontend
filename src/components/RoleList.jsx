@@ -54,10 +54,10 @@ const RoleList = ({ items, title }) => (
         <li key={item._key}>
           <div>
             <div className="avatar">
-              {item.person && item.person.image && item.person.image.asset && (
+              {item.person && item.person._rawImage && item.person._rawImage.asset && (
               <img
                 src={
-                  imageUrlFor(buildImageObj(item.person.image))
+                  imageUrlFor(buildImageObj(item.person._rawImage))
                     .width(100)
                     .height(100)
                     .fit('crop')
