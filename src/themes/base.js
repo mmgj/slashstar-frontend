@@ -24,7 +24,7 @@ export const sizes = {
 
 export const weights = {
   base: 'normal',
-  body: 'normal',
+  body: 'regular',
   strong: 'bold',
   em: 'normal',
   h1: 'bold',

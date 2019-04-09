@@ -20,6 +20,7 @@ const globalStyle = css`
       font-family: ${theme.fonts.body};
       font-size: ${theme.sizes.body};
       color: ${theme.colors.fg};
+      font-weight: ${theme.weights.body};
       margin: 0;
     }
   }

@@ -1,11 +1,11 @@
 import { sizes, colors, weights, media, fontSizes } from './base';
 
-const primaryFont = '"Source Sans Pro", "Arial", sans-serif';
+const primaryFont = 'Roboto, sans-serif';
 const secondaryFont = '"Montserrat Alternates", sans-serif';
 const tertiaryFont = primaryFont;
 
 const setup = `
-    @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,400i,900|Roboto:400,400i,700,700i');
+    @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,400i,900|Roboto:400,400i,700,700i,300,300i,100,100i');
 `;
 
 export default {
@@ -22,6 +22,7 @@ export default {
     h2: 900,
     h3: 500,
     h4: 100,
+    body: 400,
   },
   fontSizes,
   sizes,
