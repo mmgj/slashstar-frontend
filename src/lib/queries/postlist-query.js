@@ -5,6 +5,7 @@ export const postsQuery = graphql`
   fragment postsQuery on SanityPost{
     id
     publishedAt
+    _rawAuthors(resolveReferences: {maxDepth: 5})
     mainImage {
       crop {
         _key

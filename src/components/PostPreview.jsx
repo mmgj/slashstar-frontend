@@ -83,7 +83,6 @@ const Preview = styled(Link)`
 
 const PostPreview = ({ item }) => {
   const { title, _rawExcerpt: excerpt, mainImage, slug } = item.node;
-
   const imgUrl = mainImage.asset ? imageUrlFor(buildImageObj(mainImage)).width(500).url() : 'https://picsum.photos/500/200';
   return (
     <Preview to={`/posts/${slug.current}`}>
