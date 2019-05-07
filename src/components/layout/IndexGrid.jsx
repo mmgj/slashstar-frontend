@@ -7,6 +7,7 @@ const FrontPageGrid = styled.div`
   height: 100vh;
   grid-template-columns: repeat(16, 1fr);
   grid-auto-rows: 100px 10vh auto 5vh 110px;
+  background: #fafafa;
   header, footer {
     grid-column: 1 / 17;
     padding: 1rem;

@@ -25,6 +25,9 @@ export const postsQuery = graphql`
       }
       asset {
         _id
+        fluid(maxWidth: 600) {
+          ...GatsbySanityImageFluid
+        }
       }
       alt
     }
