@@ -4,6 +4,45 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+async function createSnippetPages(graphql, actions, reporter) {
+  const { createPage, createPageDependency } = actions;
+  const result = await graphql(`
+    {
+      allSanityBit(filter: { slug: { current: { ne: null } } }) {
+        edges {
+          node {
+            id
+            publishedAt
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) throw result.errors;
+
+  const snippetEdges = (result.data.allSanityBit || {}).edges || [];
+
+  snippetEdges.forEach((edge) => {
+    const { id, slug = {} } = edge.node;
+    // const dateSegment = format(publishedAt, 'YYYY/MM');
+    const path = `/bits/${slug.current}/`;
+
+    reporter.info(`Creating snippet page: ${path}`);
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/bit.jsx'),
+      context: { id },
+    });
+
+    createPageDependency({ path, nodeId: id });
+  });
+}
+
 
 async function createBlogPostPages(graphql, actions, reporter) {
   const { createPage, createPageDependency } = actions;
@@ -47,4 +86,5 @@ async function createBlogPostPages(graphql, actions, reporter) {
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createBlogPostPages(graphql, actions, reporter);
+  await createSnippetPages(graphql, actions, reporter);
 };

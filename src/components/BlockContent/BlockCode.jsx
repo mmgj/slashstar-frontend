@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import Prism from './prism';
 import './prism-monokai.css';
 
-const BlockCode = ({ language, children }) => {
+const BlockCode = ({ language, children, ...props }) => {
   useEffect(() => {
     Prism.highlightAll();
   });
   return (
-    <pre className={`line-numbers language-${language}`}>
+    <pre className={`line-numbers language-${language}`} {...props}>
       <code className={`language-${language}`}>{children}</code>
     </pre>
   );

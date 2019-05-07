@@ -21,7 +21,6 @@ const BlogPostTemplate = ({ data, errors, location }) => {
   const {
     post: { mainImage, title, _rawBody: body, bespoke, _rawExcerpt: excerpt, pageMeta },
   } = data;
-  console.log('mainImage: ', mainImage);
   return (
     <>
       {errors && <h1>Errored!</h1>}

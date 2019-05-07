@@ -30,21 +30,25 @@ const StyledSection = styled.section`
 `;
 
 const StyledBase = styled(BaseBlockContent)`
-  a, a:visited {
-      color: ${props => darken(0.5, props.theme.colors.secondary)};
-      text-decoration: none;
-      border-bottom: 2px solid ${props => props.theme.colors.secondary};
-    }
+  a,
+  a:visited {
+    color: ${props => darken(0.5, props.theme.colors.secondary)};
+    text-decoration: none;
+    border-bottom: 2px solid ${props => props.theme.colors.secondary};
+  }
 `;
 
 const getPath = type => (type === 'post' ? '/posts/' : '/');
-
 
 const serializers = {
   // FIXME: ⬇ Make this work!
   marks: {
     intLink({ mark, children }) {
-      return <Link to={`${getPath(mark.reference._type)}${mark.reference.slug.current}`}>{children}</Link>;
+      return (
+        <Link to={`${getPath(mark.reference._type)}${mark.reference.slug.current}`}>
+          {children}
+        </Link>
+      );
     },
     abbr({ mark, children }) {
       return <abbr title={mark.title}>{children}</abbr>;
@@ -123,14 +127,14 @@ const serializers = {
     figure({ node }) {
       return <BlockFigure node={node} />;
     },
-    videoEmbed({ node }) {
+    youtube({ node }) {
       return (
         <ResponsiveWrapper>
           <ReactPlayer
             className="react-player"
             height="100%"
             width="100%"
-            url={`https://youtu.be/${node.id}`}
+            url={node.url}
             controls
           />
         </ResponsiveWrapper>
