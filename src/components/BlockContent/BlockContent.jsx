@@ -146,7 +146,7 @@ const serializers = {
 const BlockContent = ({ blocks }) => <StyledBase blocks={blocks} serializers={serializers} />;
 
 BlockContent.propTypes = {
-  blocks: PropTypes.array.isRequired,
+  blocks: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
 };
 
 export default BlockContent;
