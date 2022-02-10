@@ -32,7 +32,7 @@
     "gatsby-plugin-sharp": "^2.0.30",
     "gatsby-source-sanity": "^2.0.1",
     "gatsby-transformer-sharp": "^2.1.17",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "polished": "^3.0.4",
     "postcss-preset-env": "^6.6.0",
     "postcss-styled": "^0.34.0",
