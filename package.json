@@ -41,7 +41,7 @@
     "react-dom": "^16.8.5",
     "react-helmet": "^5.2.0",
     "react-player": "^1.9.3",
-    "stylelint": "^9.10.1"
+    "stylelint": "^15.10.1"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",
